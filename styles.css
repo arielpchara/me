@@ -98,8 +98,8 @@ select:focus {
 :root {
   --color-text: #f8f9fa;
   --color-text-muted: #adb5bd;
-  --color-background-start: #121212;
-  --color-background-end: #1e293b;
+  --color-background-start: #413626;
+  --color-background-end: #0c1c36;
   --color-primary: #38bdf8;
   --color-secondary: #94a3b8;
   --color-accent: #f43f5e;
@@ -227,8 +227,8 @@ a:hover {
 }
 
 .skill-category h3 {
-  font-size: 1.1rem;
-  margin-bottom: var(--space-3);
+  font-size: 1rem;
+  margin-bottom: var(--space-2);
   color: var(--color-primary);
   text-shadow: 0 0 5px rgba(56, 189, 248, 0.15);
   position: relative;
@@ -249,15 +249,15 @@ a:hover {
 .skill-list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-3);
+  gap: var(--space-1) var(--space-2);
 }
 
 .skill {
   background-color: var(--color-muted);
   color: var(--color-text);
-  padding: 0.35em 0.65em;
-  border-radius: 4px;
-  font-size: 0.85rem;
+  padding: 0.25em 0.5em;
+  border-radius: 3px;
+  font-size: 0.75rem;
   font-weight: 500;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -276,5 +276,41 @@ a:hover {
   
   .skill-category {
     margin-bottom: var(--space-4);
+  }
+}
+
+/* Profile image styles */
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.profile-image {
+  flex-shrink: 0;
+}
+
+.profile-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px var(--color-accent), 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.profile-info {
+  flex-grow: 1;
+}
+
+@media (max-width: 500px) {
+  .profile-container {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-4);
+  }
+  
+  .profile-image img {
+    width: 120px;
+    height: 120px;
   }
 }
