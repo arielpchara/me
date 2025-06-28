@@ -7,31 +7,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <main>
         <header>
-            <div class="profile-container">
-                <div class="profile-info">
-                    <h1>💾 Ariel Pchara</h1>
-                    <p>Software Architect & Frontend Engineer</p>
+            <div class="header-content">
+                <h1><i class="ri-terminal-box-fill header-icon"></i> Ariel Pchara</h1>
+                <p>Software Architect & Frontend Engineer</p>
+            </div>
+        </header>
+        <section class="about-section">
+            <h2><i class="ri-user-5-line section-icon"></i> About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>With 20+ years in software development, I've evolved from PHP websites to JavaScript mastery and modern frontend engineering. My expertise spans database management, system optimization, UI design, and DevOps practices. As a software architect with extensive experience leading Frontend teams, I combine technical knowledge with architectural vision to create elegant, functional, and scalable solutions.</p>
                 </div>
                 <div class="profile-image">
                     <img src="me.jpeg" alt="Ariel Pchara" />
                 </div>
             </div>
-        </header>
-        <section>
-            <h2>About Me</h2>
-            <p>With 20+ years in software development, I've evolved from PHP websites to JavaScript mastery and modern frontend engineering. My expertise spans database management, system optimization, UI design, and DevOps practices. As a software architect with extensive experience leading Frontend teams, I combine technical knowledge with architectural vision to create elegant, functional, and scalable solutions.</p>
         </section>
 
         <section>
-            <h2>Skills</h2>
+            <h2><i class="ri-code-box-line section-icon"></i> Skills</h2>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Languages</h3>
+                    <h3><i class="ri-code-line category-icon"></i> Languages</h3>
                     <div class="skill-list">
                         <span class="skill">JavaScript (15+ years)</span>
                         <span class="skill">C# (Recent)</span>
@@ -45,7 +48,7 @@
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Frontend</h3>
+                    <h3><i class="ri-layout-4-line category-icon"></i> Frontend</h3>
                     <div class="skill-list">
                         <span class="skill">React (5+ years)</span>
                         <span class="skill">Angular/AngularJS (5+ years)</span>
@@ -61,7 +64,7 @@
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Backend & DevOps</h3>
+                    <h3><i class="ri-server-line category-icon"></i> Backend & DevOps</h3>
                     <div class="skill-list">
                         <span class="skill">NodeJS</span>
                         <span class="skill">Spring Boot</span>
@@ -77,7 +80,7 @@
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Tools & Others</h3>
+                    <h3><i class="ri-tools-line category-icon"></i> Tools & Others</h3>
                     <div class="skill-list">
                         <span class="skill">Git</span>
                         <span class="skill">Jest</span>
@@ -93,5 +96,30 @@
             </div>
         </section>
         </main>
+        <footer>
+            <div class="footer-content">
+                <div class="contact-section">
+                    <h3><i class="ri-contacts-line footer-section-icon"></i> Contact</h3>
+                    <div class="contact-links">
+                        <a href="mailto:ariel@pchara.dev" class="contact-link">
+                            <i class="ri-mail-line"></i> ariel@pchara.com
+                        </a>
+                        <a href="https://linkedin.com/in/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                            <i class="ri-linkedin-box-line"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                            <i class="ri-github-line"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© <span id="current-year"></span> Ariel Pchara · Software Architect & Frontend Engineer</p>
+                </div>
+            </div>
+        </footer>
+        <script>
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
 </body>
 </html>
