@@ -1,0 +1,280 @@
+/* Modern CSS Reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Remove text-decoration on links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.25);
+}
+
+/* Default variables for design system */
+:root {
+  --color-text: #f8f9fa;
+  --color-text-muted: #adb5bd;
+  --color-background-start: #121212;
+  --color-background-end: #1e293b;
+  --color-primary: #38bdf8;
+  --color-secondary: #94a3b8;
+  --color-accent: #f43f5e;
+  --color-muted: #1f2937;
+  
+  --font-sans: 'JetBrains Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: 'JetBrains Mono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+}
+
+/* Main styles */
+body {
+  font-family: var(--font-mono);
+  background: linear-gradient(135deg, var(--color-background-start) 0%, var(--color-background-end) 100%);
+  background-attachment: fixed;
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Header styles */
+main {
+  padding: var(--space-8) var(--space-4);
+}
+
+header {
+  margin-bottom: var(--space-12);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.5px;
+}
+
+header p {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* Section styles */
+section {
+  margin-bottom: var(--space-12);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  position: relative;
+  display: inline-block;
+  color: var(--color-primary);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+section p {
+  font-size: 1rem;
+  max-width: 65ch;
+  color: var(--color-text);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+a:hover {
+  border-bottom-color: var(--color-primary);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+/* Skills Section Styling */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.skill-category {
+  margin-bottom: var(--space-6);
+}
+
+.skill-category h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-3);
+  color: var(--color-primary);
+  text-shadow: 0 0 5px rgba(56, 189, 248, 0.15);
+  position: relative;
+  display: inline-block;
+}
+
+.skill-category h3::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-primary);
+  opacity: 0.5;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+}
+
+.skill {
+  background-color: var(--color-muted);
+  color: var(--color-text);
+  padding: 0.35em 0.65em;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.skill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Make skills section responsive */
+@media (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .skill-category {
+    margin-bottom: var(--space-4);
+  }
+}
