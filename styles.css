@@ -283,34 +283,43 @@ a:hover {
 .profile-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-6);
 }
 
 .profile-image {
   flex-shrink: 0;
+  order: 2; /* Places image on the right side */
 }
 
 .profile-image img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 0 2px var(--color-accent), 0 0 15px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 0 3px var(--color-accent), 0 0 20px rgba(56, 189, 248, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px var(--color-accent), 0 0 25px rgba(56, 189, 248, 0.6);
 }
 
 .profile-info {
   flex-grow: 1;
+  order: 1; /* Places text on the left side */
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .profile-container {
-    flex-direction: column;
+    flex-direction: column-reverse; /* Stacks with image on top */
     text-align: center;
-    gap: var(--space-4);
+    gap: var(--space-6);
   }
   
   .profile-image img {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
   }
 }
