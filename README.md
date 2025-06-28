@@ -45,7 +45,7 @@ cd me
 
 The site is deployed using GitHub Pages and is available at:
 
-- [pchara.dev](https://pchara.dev)
+- [pchara.com](https://pchara.com)
 
 ### Deploying your own version:
 
@@ -69,6 +69,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 For questions or suggestions, reach out to me at:
 
-- Email: ariel@pchara.dev
+- Email: ariel@pchara.com
 - LinkedIn: [linkedin.com/in/arielpchara](https://linkedin.com/in/arielpchara)
 - GitHub: [github.com/arielpchara](https://github.com/arielpchara)
