@@ -1,4 +1,4 @@
-/* Modern CSS Reset */
+/* ─── Modern CSS Reset ────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -72,7 +72,7 @@ a:focus, button:focus, input:focus, textarea:focus, select:focus {
   --font-heading:  'Cinzel Decorative', 'Cinzel', Georgia, serif;
   --font-sub:      'Cinzel', Georgia, serif;
   --font-body:     'Roboto Mono', Menlo, Monaco, Consolas, monospace;
-  --font-detail:   'Crushed', 'Roboto Mono', cursive;
+  --font-detail:   'Crushed', cursive;
 
   --space-1:  0.25rem;
   --space-2:  0.5rem;
@@ -95,14 +95,21 @@ body {
   line-height: 1.7;
 }
 
-/* Subtle paper texture via gradient */
+/* Layered radial gradients + paper grain texture */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(107, 142, 35, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 100%, rgba(204, 119, 34, 0.06) 0%, transparent 60%);
+    radial-gradient(ellipse at 20% 0%, rgba(107, 142, 35, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(204, 119, 34, 0.07) 0%, transparent 60%),
+    repeating-linear-gradient(
+      92deg,
+      transparent,
+      transparent 3px,
+      rgba(107, 80, 30, 0.015) 3px,
+      rgba(107, 80, 30, 0.015) 4px
+    );
   pointer-events: none;
   z-index: 0;
 }
@@ -129,11 +136,31 @@ a:hover {
 /* ─── Header ──────────────────────────────────────────── */
 header {
   margin-bottom: var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mountain silhouette — layered peaks, header right side */
+header::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  width: 300px;
+  height: 120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 120'%3E%3Cpath d='M0,120 L50,70 L85,90 L125,40 L165,65 L205,22 L245,50 L270,30 L300,45 L300,120 Z' fill='%236B8E23' opacity='0.13'/%3E%3Cpath d='M80,120 L120,78 L155,95 L190,55 L225,75 L260,42 L300,60 L300,120 Z' fill='%23CC7722' opacity='0.07'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .header-content {
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 1;
 }
 
 header h1 {
@@ -146,11 +173,12 @@ header h1 {
   letter-spacing: 0.03em;
 }
 
+/* Subtitle — Crushed font, terracotta */
 header p {
   font-family: var(--font-detail);
-  font-size: 1.1rem;
-  color: var(--color-text-muted);
-  letter-spacing: 0.05em;
+  font-size: 1.15rem;
+  color: var(--color-accent);
+  letter-spacing: 0.06em;
 }
 
 .header-icon {
@@ -168,6 +196,8 @@ header p {
   margin-top: var(--space-4);
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-border);
+  position: relative;
+  z-index: 1;
 }
 
 .nav-link {
@@ -176,10 +206,12 @@ header p {
   gap: var(--space-1);
   font-family: var(--font-sub);
   font-size: 0.75rem;
+  font-variant: small-caps;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-muted);
   border-bottom: none;
+  position: relative;
   transition: color 0.2s ease;
 }
 
@@ -190,9 +222,21 @@ header p {
   border-bottom: none;
 }
 
+/* Active nav: terracotta + dot marker below */
 .nav-link--active {
-  color: var(--color-primary);
+  color: var(--color-accent);
   font-weight: 700;
+}
+
+.nav-link--active::after {
+  content: '•';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  color: var(--color-accent);
+  line-height: 1;
 }
 
 /* ─── Section headings ────────────────────────────────── */
@@ -210,16 +254,32 @@ h2 {
   color: var(--color-primary);
   display: inline-block;
   position: relative;
+  padding-left: 1.2em;
 }
 
+/* Trail arrowhead before h2 */
+h2::before {
+  content: '▲';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.6em;
+  color: var(--color-accent);
+  opacity: 0.7;
+  line-height: 1;
+}
+
+/* Trail-path gradient fade after h2 */
 h2::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: -5px;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-accent), transparent);
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 45%, transparent 100%);
+  border-radius: 2px;
 }
 
 .section-icon {
@@ -289,11 +349,21 @@ section p {
   gap: var(--space-1) var(--space-2);
 }
 
+/* Pill-shaped skill tags with subtle gradient */
 .skill {
-  background-color: var(--color-background-alt);
+  background: linear-gradient(135deg, var(--color-background-alt), var(--color-background-card));
+  background-image:
+    linear-gradient(135deg, var(--color-background-alt), var(--color-background-card)),
+    repeating-linear-gradient(
+      91deg,
+      transparent,
+      transparent 4px,
+      rgba(107, 80, 30, 0.012) 4px,
+      rgba(107, 80, 30, 0.012) 5px
+    );
   color: var(--color-charcoal);
-  padding: 0.25em 0.6em;
-  border-radius: 3px;
+  padding: 0.25em 0.75em;
+  border-radius: 20px;
   font-size: 0.72rem;
   font-weight: 500;
   border: 1px solid var(--color-border);
@@ -335,7 +405,10 @@ section p {
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid var(--color-background-alt);
-  box-shadow: 0 4px 20px rgba(107, 142, 35, 0.2), 0 0 0 1px var(--color-border);
+  box-shadow:
+    0 4px 20px rgba(107, 142, 35, 0.22),
+    0 0 0 1px var(--color-border),
+    inset 0 1px 4px rgba(204, 119, 34, 0.12);
   transition: box-shadow 0.3s ease;
 }
 
@@ -350,7 +423,10 @@ section p {
 }
 
 .profile-image:hover {
-  box-shadow: 0 6px 28px rgba(204, 119, 34, 0.25), 0 0 0 1px var(--color-border-strong);
+  box-shadow:
+    0 6px 28px rgba(107, 142, 35, 0.3),
+    0 0 0 1px var(--color-border-strong),
+    inset 0 1px 4px rgba(204, 119, 34, 0.18);
 }
 
 .profile-image:hover img {
@@ -372,12 +448,30 @@ footer {
   margin-top: var(--space-16);
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-border);
+  position: relative;
+}
+
+/* Footer mountain silhouette — different profile, very faint */
+footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 100%;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 820 60'%3E%3Cpath d='M0,60 L60,38 L110,48 L170,20 L220,35 L280,8 L340,28 L400,15 L460,32 L520,5 L580,24 L640,12 L700,30 L760,18 L820,28 L820,60 Z' fill='%236B8E23' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .footer-content {
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
+  position: relative;
+  z-index: 1;
 }
 
 .contact-section h3 {
@@ -437,10 +531,11 @@ footer {
   border-bottom: none;
 }
 
+/* Crushed font for footer bottom */
 .footer-bottom {
   font-family: var(--font-detail);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
   color: var(--color-text-muted);
 }
 
@@ -450,10 +545,11 @@ footer {
 }
 
 /* ─── Blog listing ────────────────────────────────────── */
+/* Crushed font for blog intro */
 .blog-intro {
   font-family: var(--font-detail);
-  font-size: 1rem;
-  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
   color: var(--color-text-muted);
   margin-bottom: var(--space-8);
   max-width: 60ch;
@@ -465,18 +561,27 @@ footer {
   gap: var(--space-6);
 }
 
+/* Cards — organic rounded, left accent border, wood grain texture */
 .post-card {
   padding: var(--space-6);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
-  background: var(--color-background-card);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 16px;
+  background-color: var(--color-background-card);
+  background-image: repeating-linear-gradient(
+    91deg,
+    transparent,
+    transparent 4px,
+    rgba(107, 80, 30, 0.012) 4px,
+    rgba(107, 80, 30, 0.012) 5px
+  );
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .post-card:hover {
-  border-color: var(--color-border-strong);
-  box-shadow: 0 4px 20px rgba(107, 142, 35, 0.1), 0 1px 4px rgba(0,0,0,0.05);
-  transform: translateY(-2px);
+  border-left-color: var(--color-primary);
+  box-shadow: 0 8px 32px rgba(107, 142, 35, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px) translateX(2px);
 }
 
 .post-meta {
@@ -485,15 +590,16 @@ footer {
   margin-bottom: var(--space-3);
 }
 
+/* Post tags — pill shape, sage green gradient */
 .post-tag {
   font-family: var(--font-sub);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.2em 0.7em;
-  border-radius: 2px;
-  background: var(--color-primary);
+  padding: 0.2em 0.85em;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: #fff;
 }
 
@@ -546,6 +652,7 @@ footer {
 }
 
 /* ─── Blog post article ───────────────────────────────── */
+/* Back link — Cinzel, uppercase, trail arrow on hover */
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -558,11 +665,12 @@ footer {
   color: var(--color-text-muted);
   margin-bottom: var(--space-8);
   border-bottom: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, gap 0.2s ease;
 }
 
 .back-link:hover {
-  color: var(--color-primary);
+  color: var(--color-accent);
+  gap: var(--space-2);
   border-bottom: none;
 }
 
@@ -570,6 +678,7 @@ footer {
   margin-bottom: var(--space-8);
 }
 
+/* Post article title — large Cinzel Decorative with terracotta underline */
 .post-article-title {
   font-family: var(--font-heading);
   font-size: 1.7rem;
@@ -579,9 +688,19 @@ footer {
   line-height: 1.25;
   margin-top: var(--space-3);
   display: block;
+  position: relative;
+  padding-bottom: var(--space-3);
 }
 
-.post-article-title::after { display: none; }
+.post-article-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary), transparent);
+}
 
 .post-content {
   line-height: 1.85;
@@ -598,7 +717,7 @@ footer {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-primary);
-  margin-top: var(--space-10);
+  margin-top: var(--space-8);
   display: inline-block;
   position: relative;
 }
@@ -682,10 +801,15 @@ footer {
   border: none;
 }
 
+/* Wavy trail-inspired section divider */
 .post-content hr {
   border: none;
-  border-top: 1px solid var(--color-border);
+  height: 20px;
   margin: var(--space-8) 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='xMidYMid meet'%3E%3Cpath d='M0,6 C15,1 30,11 45,6 C60,1 75,11 90,6 C105,1 115,11 120,6' stroke='%23CC7722' stroke-width='1.2' fill='none' opacity='0.45'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 120px 12px;
 }
 
 .post-content a {
@@ -770,12 +894,27 @@ footer {
   border: none;
 }
 
-/* Blockquote */
+/* Blockquote — rounded, quote mark watermark */
 .post-blockquote {
-  border-left: 3px solid var(--color-accent);
+  border-left: 4px solid var(--color-accent);
   padding: var(--space-4) var(--space-6);
   background: rgba(204, 119, 34, 0.06);
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 12px 12px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.post-blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 6rem;
+  color: var(--color-accent);
+  opacity: 0.08;
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .post-blockquote p {
@@ -785,6 +924,8 @@ footer {
   letter-spacing: 0.03em;
   color: var(--color-charcoal);
   max-width: none;
+  position: relative;
+  z-index: 1;
 }
 
 /* Ordered list */

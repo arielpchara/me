@@ -25,6 +25,23 @@ me/
 
 ---
 
+## Design Theme
+
+**"High Technological, Calm, Elegant, Sophisticated Adventure"**
+
+The visual identity combines earthy tones (cream, sage green, terracotta) with typographic precision (Cinzel Decorative / Cinzel / Roboto Mono / Crushed) to evoke a sense of technical exploration — like a well-equipped expedition journal.
+
+Key decorative motifs (all CSS-only, no new HTML elements):
+- **Mountain silhouettes** — `header::after` and `footer::before` pseudo-elements render layered SVG peak silhouettes as data URI background images.
+- **Wavy trail dividers** — `.post-content hr` uses an SVG sine wave in repeat-x instead of a plain border.
+- **Wood-grain card texture** — post cards and skill tags layer a near-invisible `repeating-linear-gradient` over the card background.
+- **Trail marker headings** — `h2::before` shows a small terracotta `▲` arrowhead; `h2::after` uses a 3-color gradient fade (accent → primary → transparent).
+- **Pill-shaped tags** — `.skill` and `.post-tag` use `border-radius: 20px`.
+- **Active nav dot** — `.nav-link--active::after` places a `•` marker below the active link.
+- **Blockquote watermark** — `.post-blockquote::before` renders a large translucent `"` in the background.
+
+---
+
 ## Design System
 
 ### Color Palette
@@ -53,7 +70,7 @@ me/
 | `--font-heading` | Cinzel Decorative | Page `<h1>`, post article titles |
 | `--font-sub` | Cinzel | Section h2/h3/h4, nav, tags, table headers |
 | `--font-body` | Roboto Mono | All body text, code |
-| `--font-detail` | Crushed | Subtitles, footer, blog intro, blockquotes, closing lines |
+| `--font-detail` | Crushed | Header subtitle (`header p`), `.blog-intro`, `.footer-bottom`, blockquotes, closing lines |
 
 **Rules:**
 - `h1` → `font-family: var(--font-heading)` — only for the site name and post article title
@@ -76,10 +93,11 @@ Every page has the same `<nav class="site-nav">` inside `<header>`:
 - Active page gets `class="nav-link nav-link--active"`
 
 ### Post Tags
-Use `<span class="post-tag">` — white text on sage green background. Keep tags short (1–2 words, Title Case).
+Use `<span class="post-tag">` — white text on a sage green gradient (`linear-gradient(135deg, --color-primary, --color-primary-dark)`), pill shape (`border-radius: 20px`). Keep tags short (1–2 words, Title Case).
 
 ### Post Cards (blog listing)
 Structure: `post-meta` → `post-title` → `post-excerpt` → `post-read-more`.
+Cards have `border-radius: 16px`, a 3px terracotta left-border accent, and a subtle wood-grain `repeating-linear-gradient` texture. On hover the left border turns sage green and the card lifts with a diagonal translate.
 
 ### Blog Post Page
 
@@ -142,3 +160,6 @@ Load only the language components the post actually uses.
 - Do not change the color tokens — they define the brand.
 - Do not add JavaScript beyond the year setter and Prism.js loader.
 - Do not add external analytics, trackers, or third-party scripts beyond fonts, remixicon, and prism.
+- Do not add new HTML elements for decorative purposes — use CSS pseudo-elements (`::before`, `::after`) instead.
+- Do not use `!important` excessively.
+- Do not change class names in HTML.
