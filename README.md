@@ -2,7 +2,7 @@
 
 ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)
 
-A modern, minimalist personal website showcasing my professional experience as a Software Architect & Frontend Engineer.
+A modern, minimalist personal website showcasing my professional experience as a Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS.
 
 ## 🚀 Features
 
