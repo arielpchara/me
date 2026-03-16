@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💾 I rebuilt a project from scratch in under 24 hours · Ariel Pchara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-content">
+                <h1><i class="ri-terminal-box-fill header-icon"></i> Ariel Pchara</h1>
+                <p>Software Architect & Full Stack Engineer</p>
+            </div>
+            <nav class="site-nav">
+                <a href="../index.html" class="nav-link"><i class="ri-article-line"></i> Blog</a>
+                <a href="../profile.html" class="nav-link"><i class="ri-user-5-line"></i> Profile</a>
+            </nav>
+        </header>
+
+        <article class="post-article">
+            <a href="../index.html" class="back-link"><i class="ri-arrow-left-line"></i> Back to blog</a>
+
+            <div class="post-article-header">
+                <div class="post-meta">
+                    <span class="post-tag">AI</span>
+                    <span class="post-tag">Architecture</span>
+                    <span class="post-tag">Engineering</span>
+                </div>
+                <h2 class="post-article-title">I rebuilt a project from scratch in under 24 hours — using AI as my Copilot</h2>
+            </div>
+
+            <div class="post-content">
+                <p>Not "AI built it for me." I built it — with AI as an extension of my thinking.</p>
+                <p>Let me tell you what actually happened.</p>
+
+                <hr>
+
+                <h3>The idea</h3>
+
+                <p>I wanted a simple tool: <strong>edit server files from the browser</strong>. No SSH client, no SCP, no copying files back and forth. Just run a command on the server, open a URL, and edit.</p>
+                <p>That became <a href="https://github.com/arielpchara/reditor-refactored" target="_blank" rel="noopener">REDITOR</a>.</p>
+                <p>The first version was more concept than product. So I decided to rebuild it from scratch — properly. With architecture, tests, security, a real CLI. And I set myself a constraint: do it in under 24 hours.</p>
+
+                <hr>
+
+                <h3>What I actually shipped</h3>
+
+                <ul>
+                    <li><strong>52 commits, 69 files, ~3,600 lines of code, ~1,200 lines of tests</strong></li>
+                    <li>A CLI tool runnable directly via <code>npx</code> — no install needed</li>
+                    <li>Browser-based file editor (React + Vite) with syntax highlighting via <code>prism-code-editor</code></li>
+                    <li>HTTPS with auto-generated self-signed certificate</li>
+                    <li>OTP authentication: a one-time password printed in the terminal, entered in the browser</li>
+                    <li>JWT (RS256) after OTP exchange — with configurable TTL and persistent RSA keys</li>
+                    <li>Brute-force protection: server exits after 3 failed OTP attempts</li>
+                    <li>Startup validation: fails fast if the file doesn't exist, is a directory, exceeds 512 KB, or contains binary content</li>
+                    <li>Structured logging with Winston</li>
+                </ul>
+
+<pre><code class="language-sh">npx github:arielpchara/reditor-refactored serve ./any-file.txt</code></pre>
+
+                <p>The OTP shows in the terminal. Paste it in the browser. Done.</p>
+
+                <hr>
+
+                <h3>The architecture came first</h3>
+
+                <p>Before writing a single line of code with AI, I architected everything myself.</p>
+                <p>I wrote an <code>AGENTS.md</code> — 356 lines defining:</p>
+
+                <ul>
+                    <li><strong>Hexagonal architecture</strong> (domain, application, infrastructure layers)</li>
+                    <li><strong>Coding conventions</strong> (naming, file structure, import rules)</li>
+                    <li><strong>Dependency rules</strong> (what can import what)</li>
+                    <li><strong>Test patterns</strong> (unit, integration, how to mock ports)</li>
+                    <li><strong>Commit conventions</strong></li>
+                </ul>
+
+                <p>This is not a README. This is an instruction set for the AI — a contract it must follow.</p>
+                <p>Then I created <strong>5 Skills</strong>: specialized instruction files that teach the AI how to perform specific recurring tasks:</p>
+
+                <div class="post-table-wrap">
+                    <table class="post-table">
+                        <thead>
+                            <tr>
+                                <th>Skill</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>commit</code></td>
+                                <td>Format and structure commit messages following conventions</td>
+                            </tr>
+                            <tr>
+                                <td><code>update-docs</code></td>
+                                <td>Keep documentation in sync with code changes</td>
+                            </tr>
+                            <tr>
+                                <td><code>http-scenarios</code></td>
+                                <td>Generate HTTP test scenarios from endpoints</td>
+                            </tr>
+                            <tr>
+                                <td><code>bump-version</code></td>
+                                <td>Manage semantic versioning</td>
+                            </tr>
+                            <tr>
+                                <td><code>track-ai-usage</code></td>
+                                <td>Log which parts were AI-assisted</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>I set the rules. The AI executed. I reviewed and steered.</strong></p>
+
+                <hr>
+
+                <h3>Things changed mid-flight — that's real development</h3>
+
+                <p>The project didn't follow a straight line, even with AI:</p>
+
+                <ul>
+                    <li>Plain HTML → <strong>React + Vite</strong> (the UI needed proper component state)</li>
+                    <li><code>tsc</code> → <strong>esbuild</strong> (for a lightweight, fast <code>npx</code>-ready bundle)</li>
+                    <li>The UI was redesigned <strong>twice</strong></li>
+                </ul>
+
+                <p>Every pivot required re-evaluating decisions, updating the architecture, and steering the AI back to the new direction. That's not a failure of the process — that's software development.</p>
+
+                <hr>
+
+                <h3>Not all models are equal</h3>
+
+                <p>I tested several models during this session. Here's the honest breakdown:</p>
+
+                <h4>Claude Sonnet — the sweet spot ✅</h4>
+                <p>Understood the Skills system. Followed conventions consistently. Produced code that matched the architecture without constant correction. Reasonable token cost for long sessions.</p>
+
+                <h4>Claude Opus — powerful but expensive ⚠️</h4>
+                <p>More capable on complex reasoning tasks, but burned through tokens fast. Not sustainable for a 21-hour session with constant back-and-forth.</p>
+
+                <h4>Claude Haiku — too limited for this ❌</h4>
+                <p>Couldn't handle complex multi-step tasks. Failed to follow the Skills instructions properly. Good for isolated, simple tasks — not for architectural work.</p>
+
+                <h4>Codex (OpenAI) — ignored the skills system ❌</h4>
+                <p>Generated code outside the defined conventions. Treated the Skills files as optional hints instead of hard rules. Required significantly more correction.</p>
+
+                <hr>
+
+                <h3>The moment AI starts to degrade</h3>
+
+                <p>There were several moments during the session where the AI visibly started to drift:</p>
+
+                <ul>
+                    <li>Context too long → it started forgetting previous architectural decisions</li>
+                    <li>Proposing unnecessary refactors for things that were already correct</li>
+                    <li>Generating code that contradicted conventions it had followed 10 commits earlier</li>
+                </ul>
+
+                <p>The fix every time: <strong>clear the context, start a fresh session, re-anchor to the AGENTS.md</strong>.</p>
+                <p>This is the part no one talks about. AI doesn't degrade in a dramatic way — it degrades gradually. A slightly wrong import here, a convention ignored there. If you're not reviewing carefully, it compounds.</p>
+
+                <hr>
+
+                <h3>The lesson</h3>
+
+                <blockquote class="post-blockquote">
+                    <p>AI is a tool, not autopilot. The output quality is directly proportional to the quality of your instructions and your supervision.</p>
+                </blockquote>
+
+                <p>The AGENTS.md and Skills system are what made this work. Without them, I'd have spent as much time correcting the AI as I would have spent writing the code myself.</p>
+                <p>If you want to use AI effectively on a real project:</p>
+
+                <ol class="post-ol">
+                    <li><strong>Architect first</strong> — define structure, conventions, and boundaries before involving AI</li>
+                    <li><strong>Write explicit instructions</strong> — <code>AGENTS.md</code>, skill files, or equivalent. Be specific, not vague</li>
+                    <li><strong>Review everything</strong> — AI is fast at generating; you need to be fast at evaluating</li>
+                    <li><strong>Manage context actively</strong> — long sessions degrade. Reset when you see drift</li>
+                    <li><strong>Choose the right model</strong> — capability, cost, and instruction-following are different axes</li>
+                </ol>
+
+                <hr>
+
+                <h3>Try it</h3>
+
+<pre><code class="language-sh">npx github:arielpchara/reditor-refactored serve ./any-file.txt</code></pre>
+
+                <p>Requires Node.js ≥ 18. On first run it builds from source — subsequent runs use the npm cache.</p>
+                <p>Source: <a href="https://github.com/arielpchara/reditor-refactored" target="_blank" rel="noopener">github.com/arielpchara/reditor-refactored</a></p>
+
+                <hr>
+
+                <p class="post-closing">52 commits. 69 files. ~3,600 lines of code. 5 skills. 1 AGENTS.md. Under 24 hours.</p>
+                <p class="post-closing">The AI didn't build this. <strong>I did — with AI as an extension of my thinking.</strong></p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-section">
+                <h3><i class="ri-contacts-line footer-section-icon"></i> Contact</h3>
+                <div class="contact-links">
+                    <a href="mailto:ariel@pchara.com" class="contact-link">
+                        <i class="ri-mail-line"></i> ariel@pchara.com
+                    </a>
+                    <a href="https://linkedin.com/in/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-linkedin-box-line"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-github-line"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="current-year"></span> Ariel Pchara · Software Architect & Frontend Engineer</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
