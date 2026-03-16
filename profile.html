@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💾   Ariel Pchara - Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-content">
+                <h1><i class="ri-terminal-box-fill header-icon"></i> Ariel Pchara</h1>
+                <p>Software Architect & Full Stack Engineer</p>
+            </div>
+            <nav class="site-nav">
+                <a href="index.html" class="nav-link"><i class="ri-article-line"></i> Blog</a>
+                <a href="profile.html" class="nav-link nav-link--active"><i class="ri-user-5-line"></i> Profile</a>
+            </nav>
+        </header>
+        <section class="about-section">
+            <h2><i class="ri-user-5-line section-icon"></i> About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>With 20+ years in software development, I've evolved from PHP websites to JavaScript mastery and modern frontend engineering. My expertise spans database management, system optimization, UI design, and DevOps practices. As a software architect with extensive experience leading Frontend teams, I combine technical knowledge with architectural vision to create elegant, functional, and scalable solutions.</p>
+                </div>
+                <div class="profile-image">
+                    <img src="me.jpeg" alt="Ariel Pchara" />
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="ri-code-box-line section-icon"></i> Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="ri-code-line category-icon"></i> Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill">JavaScript (15+ years)</span>
+                        <span class="skill">Go (Recent)</span>
+                        <span class="skill">C# (Recent)</span>
+                        <span class="skill">Rust (Recent)</span>
+                        <span class="skill">Go/Golang</span>
+                        <span class="skill">PHP (10+ years)</span>
+                        <span class="skill">Groovy</span>
+                        <span class="skill">Java</span>
+                        <span class="skill">C</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="ri-layout-4-line category-icon"></i> Frontend</h3>
+                    <div class="skill-list">
+                        <span class="skill">React (5+ years)</span>
+                        <span class="skill">Angular/AngularJS (5+ years)</span>
+                        <span class="skill">Vue</span>
+                        <span class="skill">RxJS</span>
+                        <span class="skill">MarkoJS</span>
+                        <span class="skill">HTML/CSS/SASS</span>
+                        <span class="skill">Responsive Design</span>
+                        <span class="skill">jQuery</span>
+                        <span class="skill">Bootstrap</span>
+                        <span class="skill">Webpack</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="ri-server-line category-icon"></i> Backend & DevOps</h3>
+                    <div class="skill-list">
+                        <span class="skill">NodeJS</span>
+                        <span class="skill">Docker</span>
+                        <span class="skill">Kubernetes</span>
+                        <span class="skill">Jenkins</span>
+                        <span class="skill">AWS</span>
+                        <span class="skill">Azure</span>
+                        <span class="skill">CI/CD</span>
+                        <span class="skill">Micro-frontend</span>
+                        <span class="skill">Micro-services</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="ri-tools-line category-icon"></i> Tools & Others</h3>
+                    <div class="skill-list">
+                        <span class="skill">Git</span>
+                        <span class="skill">Jest</span>
+                        <span class="skill">Testing Library</span>
+                        <span class="skill">SonarQube</span>
+                        <span class="skill">Cypress</span>
+                        <span class="skill">HCP Vault</span>
+                        <span class="skill">HCP Consul</span>
+                        <span class="skill">OAuth2/SSO</span>
+                        <span class="skill">UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <div class="contact-section">
+                    <h3><i class="ri-contacts-line footer-section-icon"></i> Contact</h3>
+                    <div class="contact-links">
+                        <a href="mailto:ariel@pchara.com" class="contact-link">
+                            <i class="ri-mail-line"></i> ariel@pchara.com
+                        </a>
+                        <a href="https://linkedin.com/in/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                            <i class="ri-linkedin-box-line"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                            <i class="ri-github-line"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© <span id="current-year"></span> Ariel Pchara · Software Architect & Frontend Engineer</p>
+                </div>
+            </div>
+        </footer>
+        <script>
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
+</body>
+</html>

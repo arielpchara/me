@@ -1,0 +1,25 @@
+{
+  "name": "me",
+  "version": "1.0.0",
+  "description": "![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "open": "http-server -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arielpchara/me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/arielpchara/me/issues"
+  },
+  "homepage": "https://github.com/arielpchara/me#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
