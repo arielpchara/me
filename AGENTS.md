@@ -27,86 +27,124 @@ me/
 
 ## Design Theme
 
-**"High Technological, Calm, Elegant, Sophisticated Adventure"**
-
-The visual identity combines earthy tones (cream, sage green, terracotta) with typographic precision (Cinzel Decorative / Cinzel / Roboto Mono / Crushed) to evoke a sense of technical exploration — like a well-equipped expedition journal.
-
-Key decorative motifs (all CSS-only, no new HTML elements):
-- **Mountain silhouettes** — `header::after` and `footer::before` pseudo-elements render layered SVG peak silhouettes as data URI background images.
-- **Wavy trail dividers** — `.post-content hr` uses an SVG sine wave in repeat-x instead of a plain border.
-- **Wood-grain card texture** — post cards and skill tags layer a near-invisible `repeating-linear-gradient` over the card background.
-- **Trail marker headings** — `h2::before` shows a small terracotta `▲` arrowhead; `h2::after` uses a 3-color gradient fade (accent → primary → transparent).
-- **Pill-shaped tags** — `.skill` and `.post-tag` use `border-radius: 20px`.
-- **Active nav dot** — `.nav-link--active::after` places a `•` marker below the active link.
-- **Blockquote watermark** — `.post-blockquote::before` renders a large translucent `"` in the background.
+**DEV.to (DEV Community) inspired** — clean, minimal, readable. High contrast text on white (light mode) or near-black (dark mode), with an indigo/blue primary and amber accent. No decorative textures, no background gradients, no pseudo-element mountains or waves.
 
 ---
 
 ## Design System
 
-### Color Palette
+### Color Tokens
+
+All colors are defined as CSS custom properties on `:root` and automatically switch via `@media (prefers-color-scheme: dark)`. **Never** use raw hex values in HTML or CSS — always reference tokens.
+
+#### Light Mode
 
 | Token | Value | Role |
 |---|---|---|
-| `--color-text` | `#2e2b25` | Body text |
-| `--color-text-muted` | `#6b6456` | Secondary text, excerpts |
-| `--color-background` | `#F8F4E3` | Page background (cream white) |
-| `--color-background-alt` | `#f0ead0` | Subtle alternate surfaces |
-| `--color-background-card` | `#f4f0de` | Post cards |
-| `--color-primary` | `#6B8E23` | Sage green — headings, links, tags |
-| `--color-primary-dark` | `#4f6a1a` | Hover state for primary |
-| `--color-accent` | `#CC7722` | Terracotta — icons, underlines, CTAs |
-| `--color-accent-dark` | `#a85e17` | Hover state for accent |
-| `--color-charcoal` | `#333333` | High-contrast text, post titles |
-| `--color-border` | `rgba(107,100,86,0.18)` | Subtle borders |
-| `--color-border-strong` | `rgba(107,142,35,0.35)` | Hover borders |
+| `--color-bg` | `#ffffff` | Page background |
+| `--color-bg-secondary` | `#f5f5f5` | Subtle surfaces, code bg, table headers |
+| `--color-bg-card` | `#ffffff` | Post cards |
+| `--color-border` | `#e8e8e8` | Default borders |
+| `--color-border-hover` | `#c5c5c5` | Hover-state borders |
+| `--color-text` | `#0d1117` | Body text |
+| `--color-text-muted` | `#525252` | Secondary text, excerpts |
+| `--color-text-light` | `#737373` | Footer fine print |
+| `--color-primary` | `#3b49df` | Links, active states, CTA |
+| `--color-primary-hover` | `#2f3ab2` | Hover for primary |
+| `--color-primary-light` | `rgba(59,73,223,0.08)` | Active nav bg, blockquote bg |
+| `--color-accent` | `#f7a046` | Icons, decorative highlights |
+| `--color-tag-bg` | `#f0f0f0` | Tag/skill pill background |
+| `--color-tag-text` | `#525252` | Tag/skill pill text |
+| `--color-shadow` | `rgba(0,0,0,0.06)` | Default shadow |
+| `--color-shadow-hover` | `rgba(0,0,0,0.12)` | Hover shadow |
 
-**Never** use raw hex values in HTML or CSS — always reference tokens.
+#### Dark Mode (auto via `prefers-color-scheme: dark`)
 
-### Typography
+| Token | Value |
+|---|---|
+| `--color-bg` | `#0f0f0f` |
+| `--color-bg-secondary` | `#1a1a1a` |
+| `--color-bg-card` | `#1a1a1a` |
+| `--color-border` | `#2a2a2a` |
+| `--color-border-hover` | `#3d3d3d` |
+| `--color-text` | `#e4e6eb` |
+| `--color-text-muted` | `#a0a0a0` |
+| `--color-primary` | `#7b8df8` |
+| `--color-primary-hover` | `#9aaafa` |
+| `--color-primary-light` | `rgba(123,141,248,0.1)` |
+| `--color-tag-bg` | `#2a2a2a` |
+| `--color-tag-text` | `#a0a0a0` |
+| `--color-shadow` | `rgba(0,0,0,0.3)` |
+| `--color-shadow-hover` | `rgba(0,0,0,0.5)` |
+
+Dark mode is **fully automatic** — no JavaScript toggle, no data attribute, no cookie. The browser handles it via the `prefers-color-scheme` media query.
+
+---
+
+## Typography
 
 | Token | Font | Usage |
 |---|---|---|
-| `--font-heading` | Cinzel Decorative | Page `<h1>`, post article titles |
-| `--font-sub` | Cinzel | Section h2/h3/h4, nav, tags, table headers |
-| `--font-body` | Roboto Mono | All body text, code |
-| `--font-detail` | Crushed | Header subtitle (`header p`), `.blog-intro`, `.footer-bottom`, blockquotes, closing lines |
+| `--font-sans` | `'Inter'`, system fallbacks | All text — headings, body, nav, tags |
+| `--font-mono` | `'JetBrains Mono'`, monospace fallbacks | Code blocks and inline code only |
 
-**Rules:**
-- `h1` → `font-family: var(--font-heading)` — only for the site name and post article title
-- `h2`, `h3`, `h4` → `font-family: var(--font-sub)`
-- Never use JetBrains Mono — it has been replaced
-- Code blocks use Roboto Mono via `--font-body` (inherited)
+### Rules
+- **Inter** is the only display/body font. Never use Cinzel, Roboto Mono, or Crushed.
+- **JetBrains Mono** is used exclusively for `<code>` and `<pre>` elements.
+- Heading weights: `h1` → 700, `h2` → 700, `h3` → 700, `h4` → 600.
+- Body line-height: `1.75` (base), `1.8` (post content), `1.65` (excerpts).
 
-### Spacing Scale
-
-Use only these tokens: `--space-1` (0.25rem), `--space-2` (0.5rem), `--space-3` (0.75rem), `--space-4` (1rem), `--space-6` (1.5rem), `--space-8` (2rem), `--space-12` (3rem), `--space-16` (4rem).
+### Google Fonts Import (all pages)
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+```
 
 ---
 
 ## Component Patterns
 
 ### Navigation
-Every page has the same `<nav class="site-nav">` inside `<header>`:
-- Blog link → `href="../index.html"` (or `index.html` if at root)
-- Profile link → `href="../profile.html"` (or `profile.html` if at root)
+Every page has `<nav class="site-nav">` inside `<header>`:
+- Blog link → `href="index.html"` (root) or `href="../index.html"` (posts)
+- Profile link → `href="profile.html"` (root) or `href="../profile.html"` (posts)
 - Active page gets `class="nav-link nav-link--active"`
 
-### Post Tags
-Use `<span class="post-tag">` — white text on a sage green gradient (`linear-gradient(135deg, --color-primary, --color-primary-dark)`), pill shape (`border-radius: 20px`). Keep tags short (1–2 words, Title Case).
+```html
+<nav class="site-nav">
+  <a href="index.html" class="nav-link nav-link--active">Blog</a>
+  <a href="profile.html" class="nav-link">Profile</a>
+</nav>
+```
 
 ### Post Cards (blog listing)
 Structure: `post-meta` → `post-title` → `post-excerpt` → `post-read-more`.
-Cards have `border-radius: 16px`, a 3px terracotta left-border accent, and a subtle wood-grain `repeating-linear-gradient` texture. On hover the left border turns sage green and the card lifts with a diagonal translate.
 
-### Blog Post Page
+```html
+<article class="post-card">
+  <div class="post-meta">
+    <span class="post-tag">JavaScript</span>
+    <span class="post-tag">Async</span>
+  </div>
+  <h2 class="post-title"><a href="post-slug/">Post Title</a></h2>
+  <p class="post-excerpt">Short excerpt…</p>
+  <a href="post-slug/" class="post-read-more">Read more →</a>
+</article>
+```
 
+### Tags / Pills
+- Tags use `<span class="post-tag">` (listing) or `<span class="skill">` (profile).
+- Both are pill-shaped (`border-radius: 20px`), muted background by default.
+- On hover they shift to a light primary background with a primary border.
+
+### Blog Post Article
 ```html
 <article class="post-article">
   <a href="../index.html" class="back-link">← Back to blog</a>
   <div class="post-article-header">
     <div class="post-meta">…tags…</div>
-    <h2 class="post-article-title">…title…</h2>
+    <h2 class="post-article-title">Post Title</h2>
   </div>
   <div class="post-content">
     …article body…
@@ -115,27 +153,45 @@ Cards have `border-radius: 16px`, a 3px terracotta left-border accent, and a sub
 ```
 
 **Inside `.post-content`:**
-- Sections separated by `<hr>`
 - Section headings → `<h3>` (sub-sections → `<h4>`)
-- Unordered lists → `<ul>` with `<li>`
-- Ordered lists → `<ol class="post-ol">` with `<li>`
+- Sections separated by `<hr>`
+- Unordered lists → `<ul><li>…</li></ul>` (dash bullet via CSS)
+- Ordered lists → `<ol class="post-ol"><li>…</li></ol>`
 - Tables → `<div class="post-table-wrap"><table class="post-table">…</table></div>`
 - Blockquotes → `<blockquote class="post-blockquote"><p>…</p></blockquote>`
-- Closing sentence → `<p class="post-closing">…</p>`
-- ASCII diagrams → `<pre class="post-pyramid"><code>…</code></pre>`
+- Closing line → `<p class="post-closing">…</p>`
+- ASCII / diagram blocks → `<pre class="post-pyramid"><code>…</code></pre>`
 
-### Syntax Highlighting
-Use Prism.js from CDN (`prism-tomorrow` theme — dark blocks contrast well on cream background).
+### Blockquotes
+Left-border accent (`var(--color-primary)`), light primary-tinted background, italic text. No large decorative quotation mark pseudo-element.
+
+### Code Blocks
+Use Prism.js with the `prism-tomorrow` theme (dark). Inline `<code>` uses `var(--color-bg-secondary)` background with `var(--color-primary)` text.
 
 ```html
+<!-- In <head> -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
-…
+
+<!-- Before </body> -->
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
 ```
 
 Load only the language components the post actually uses.
+
+### Tables
+Wrap in `.post-table-wrap` for horizontal scroll. Use `.post-table` on the `<table>`. Headers are uppercase, muted, small. Row hover highlights with `var(--color-bg-secondary)`.
+
+---
+
+## Dark Mode
+
+Dark mode is **automatic** — driven entirely by `@media (prefers-color-scheme: dark)` in `styles.css`. All color tokens are overridden in that media query.
+
+- No JavaScript is needed.
+- No `data-theme` attribute or class toggle.
+- No cookie or localStorage.
+- To test: change your OS appearance setting.
 
 ---
 
@@ -143,23 +199,24 @@ Load only the language components the post actually uses.
 
 1. **Create directory**: `mkdir <post-slug>/`
 2. **Create** `<post-slug>/index.html` — copy the structure from an existing post page.
-3. **Update** `index.html` — add a new `<article class="post-card">` at the top of `.post-list` (most recent first).
-4. **Font imports** — use the shared Google Fonts URL (Cinzel Decorative + Cinzel + Roboto Mono + Crushed).
-5. **Relative paths** — CSS and back-link use `../` prefix.
-6. **Language** — write posts in English unless the source is explicitly in another language.
-7. **`<html lang="…">`** — set to `"en"` for English posts.
+3. **Update CSS path** — use `../styles.css`.
+4. **Update back-link** — use `href="../index.html"`.
+5. **Update font import** — use the Inter + JetBrains Mono Google Fonts URL above.
+6. **Add to listing** — add a new `<article class="post-card">` at the top of `.post-list` in `index.html` (most recent first).
+7. **Language** — write posts in English. Set `<html lang="en">`.
+8. **Title format** — `<title>Post Title · Ariel Pchara</title>` (no emoji prefix).
 
 ---
 
-## What Not to Do
+## What NOT to Do
 
-- Do not add inline `style=""` attributes.
-- Do not add new CSS files or `<style>` blocks inside HTML.
-- Do not use the old JetBrains Mono font.
-- Do not use dark backgrounds for page content (only code blocks are dark).
-- Do not change the color tokens — they define the brand.
-- Do not add JavaScript beyond the year setter and Prism.js loader.
-- Do not add external analytics, trackers, or third-party scripts beyond fonts, remixicon, and prism.
-- Do not add new HTML elements for decorative purposes — use CSS pseudo-elements (`::before`, `::after`) instead.
-- Do not use `!important` excessively.
-- Do not change class names in HTML.
+- **No inline `style=""` attributes** — all styling goes in `styles.css`.
+- **No new CSS files or `<style>` blocks** inside HTML.
+- **No old fonts** — Cinzel Decorative, Cinzel, Roboto Mono, and Crushed have been removed. Use Inter and JetBrains Mono only.
+- **No background gradients on `body`** — the background is a flat `var(--color-bg)`.
+- **No decorative pseudo-elements on `body`, `header`, or `footer`** — no mountain silhouettes, no wave dividers, no SVG data URIs for decoration.
+- **No background textures** — no `repeating-linear-gradient` wood-grain overlays on cards.
+- **No JavaScript beyond** the year setter and Prism.js loader.
+- **No external analytics, trackers, or third-party scripts** beyond Google Fonts, remixicon, and Prism.js.
+- **Do not rename HTML classes** — the CSS targets existing class names exactly.
+- **No `!important`** except inside the `prefers-reduced-motion` block.
