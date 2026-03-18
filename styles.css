@@ -61,7 +61,7 @@ input, button, textarea, select {
   --color-tag-bg:       #f0f0f0;
   --color-tag-text:     #525252;
   --color-shadow:       rgba(0,0,0,0.06);
-  --color-shadow-hover: rgba(0,0,0,0.12);
+  --color-shadow-hover: rgba(0,0,0,0.2);
   --radius-sm:    4px;
   --radius-md:    6px;
   --radius-lg:    8px;
@@ -239,7 +239,7 @@ h2::before { display: none; }
 
 .post-card:hover {
   border-color: var(--color-border-hover);
-  box-shadow: 0 2px 12px var(--color-shadow-hover);
+  box-shadow: 0 2px 1px var(--color-shadow-hover);
   transform: translateY(-2px);
 }
 
@@ -669,6 +669,40 @@ h2::before { display: none; }
   transform: scale(1.6) translate(-4px, 6px);
   filter: none;
   transition: filter 0.3s;
+}
+
+.resume-cta {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-12);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #5865f2 100%);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  position: relative;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  color: #ffffff;
+  box-shadow: 0 4px 1px var(--color-shadow-hover);
+}
+
+.btn-primary i {
+  font-size: 1.2rem;
 }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
