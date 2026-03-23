@@ -633,6 +633,62 @@ h2::before { display: none; }
   transform: translateY(-1px);
 }
 
+/* ─── Experience Section ─────────────────────────────────────────────────── */
+.experience-list {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.experience-item {
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.experience-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.experience-header h3::after { display: none; }
+
+.experience-date {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.experience-company {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: var(--space-1) 0 var(--space-2);
+}
+
+.experience-description {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
 /* ─── About / Profile Section ────────────────────────────────────────────── */
 .about-section h2 { margin-bottom: var(--space-6); }
 
@@ -692,6 +748,9 @@ h2::before { display: none; }
   transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
   box-shadow: 0 2px 8px var(--color-shadow);
   position: relative;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
 }
 
 .btn-primary:hover {
@@ -703,6 +762,56 @@ h2::before { display: none; }
 
 .btn-primary i {
   font-size: 1.2rem;
+}
+
+/* ─── Resume Dropdown ────────────────────────────────────────────────────── */
+.resume-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.resume-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  min-width: 200px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px var(--color-shadow);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.resume-dropdown-menu.show {
+  display: block;
+}
+
+.resume-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.resume-dropdown-item:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.resume-dropdown-item i {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+.resume-dropdown-item:hover i {
+  color: var(--color-primary);
 }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */

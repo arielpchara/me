@@ -9,14 +9,15 @@ Porto Alegre, Rio Grande do Sul, Brazil
 
 ## Professional Summary
 
-Senior Fullstack Developer with extensive experience leading frontend and backend initiatives and a strong focus on architecture.  
-Delivered reusable React/TypeScript UI components and refactored Go services, boosting performance and user satisfaction. Built CI/CD pipelines and containerized deployments with Docker and Jenkins, significantly cutting release cycles. Passionate about applying modern architecture expertise to drive innovative, high-quality, and scalable software solutions.
+Senior Fullstack Developer with 20+ years of experience in software development, leading frontend and backend initiatives with a strong focus on architecture.  
+At Santander/PagoNxt, led a 10-member frontend squad and built a unified Design System with Storybook and CSS modules, driving consistent UI development across multiple global projects and decreasing UI defects. At South System, architected a real-time remote device monitoring platform using C#, Node.js, and AWS serverless services (Lambda, SQS, SNS, DynamoDB), reducing integration time for new devices and delivering full observability to the operations team. Most recently at Fanatics (via Avenue Code), implemented new API features with Go, Temporal, and Kafka, and refactored legacy Go and React codebases, boosting backend performance and reliability across event-driven systems.  
+Passionate about applying modern architecture expertise to drive innovative, high-quality, and scalable software solutions.
 
 ## Professional Experience
 
 **Senior Fullstack Engineer**  
 **Fanatics**  
-*Aug 2024 – Present*
+*Aug 2024 – Feb 2026*
 
 - Designed and developed new UI components using React and TypeScript, enhancing user experience with modular, reusable code.
 - Wrote unit tests for Go and React codebases to ensure functionality, reliability, and maintainability.
@@ -71,6 +72,14 @@ Delivered reusable React/TypeScript UI components and refactored Go services, bo
 - Led a team of three developers to build a frontend application for recurring-charge platforms, using Angular, RxJS, and Webpack, which improved transaction processing efficiency and earned positive feedback from stakeholders.
 - Managed high-pressure deadlines, ensuring on-time delivery of a high-quality product that received widespread praise.
 - Guided the team to implement robust solutions with Angular and RxJS, keeping the project on schedule and delivering a stable product that passed all quality audits.
+
+**Software Developer**  
+**Multiple Companies** – Brazil  
+*2004 – 2017*
+
+- Built and maintained web applications across diverse industries, gaining deep expertise in JavaScript, PHP, C, and Java over 13+ years of hands-on development.
+- Evolved from junior to senior roles, progressively taking on greater responsibilities in frontend and backend development, database design, and system integration.
+- Worked with a wide range of technologies and frameworks as the web ecosystem matured, developing a strong foundation in software architecture and best practices.
 
 ## Technical Skills
 

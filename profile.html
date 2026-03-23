@@ -27,16 +27,28 @@
             <h2><i class="ri-user-5-line section-icon"></i> About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>With 20+ years in software development, I've evolved from PHP websites to JavaScript mastery and modern frontend engineering. My expertise spans database management, system optimization, UI design, and DevOps practices. As a software architect with extensive experience leading Frontend teams, I combine technical knowledge with architectural vision to create elegant, functional, and scalable solutions.</p>
+                    <p>Senior Fullstack Developer with 20+ years of experience in software development, leading frontend and backend initiatives with a strong focus on architecture. At Santander/PagoNxt, led a 10-member frontend squad and built a unified Design System with Storybook and CSS modules, driving consistent UI development across multiple global projects. At South System, architected a real-time remote device monitoring platform using C#, Node.js, and AWS serverless services. Most recently at Fanatics (via Avenue Code), implemented new API features with Go, Temporal, and Kafka, and refactored legacy Go and React codebases, boosting backend performance and reliability across event-driven systems.</p>
                 </div>
                 <div class="profile-image">
                     <img src="me.jpeg" alt="Ariel Pchara" />
                 </div>
             </div>
             <div class="resume-cta">
-                <a href="Ariel_Pchara_Senior_Fullstack_Engineer_Resume.pdf" download class="btn-primary">
-                    <i class="ri-download-2-line"></i> Download Resume
-                </a>
+                <div class="resume-dropdown">
+                    <button class="btn-primary" id="resume-download-btn">
+                        <i class="ri-download-2-line"></i>
+                        <span id="resume-btn-label">Download Resume</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div class="resume-dropdown-menu" id="resume-dropdown-menu">
+                        <a href="Ariel_Pchara_Senior_Fullstack_Engineer_Resume.pdf" download class="resume-dropdown-item">
+                            <i class="ri-global-line"></i> English
+                        </a>
+                        <a href="Ariel_Pchara_Senior_Fullstack_Engineer_Resume_pt-BR.pdf" download class="resume-dropdown-item">
+                            <i class="ri-global-line"></i> Português (BR)
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -122,6 +134,68 @@
                 </div>
             </div>
         </section>
+
+        <section>
+            <h2><i class="ri-briefcase-line section-icon"></i> Experience</h2>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Senior Fullstack Engineer</h3>
+                        <span class="experience-date">Aug 2024 – Feb 2026</span>
+                    </div>
+                    <p class="experience-company">Fanatics</p>
+                    <p class="experience-description">Designed and developed UI components with React and TypeScript. Implemented API features using Go, Temporal, MySQL, and Kafka. Refactored legacy Go and React codebases, improving performance and reliability across event-driven systems.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Tech Lead / Senior Software Architect</h3>
+                        <span class="experience-date">Jul 2023 – Aug 2024</span>
+                    </div>
+                    <p class="experience-company">South System – Brazil</p>
+                    <p class="experience-description">Architected a real-time remote device monitoring platform using C#, Node.js, and AWS serverless services (Lambda, SQS, SNS, DynamoDB). Provisioned infrastructure with AWS CDK, ensuring scalable and reliable deployments.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Senior Frontend Engineer</h3>
+                        <span class="experience-date">Apr 2022 – Jul 2023</span>
+                    </div>
+                    <p class="experience-company">eBay</p>
+                    <p class="experience-description">Developed UI components using MarkoJS and React. Maintained and optimized the Backend for Frontend (BFF) layer with Node.js, improving API integrations and frontend-backend communication.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Senior Software Architect</h3>
+                        <span class="experience-date">2021 – Apr 2022</span>
+                    </div>
+                    <p class="experience-company">Gente Seguradora – Brazil</p>
+                    <p class="experience-description">Configured Docker clusters and Traefik for microservices. Set up HashiCorp Vault for secrets management. Led migration of Jenkins infrastructure to Docker and optimized CI/CD pipelines.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Tech Lead / Senior Frontend Architect</h3>
+                        <span class="experience-date">2018 – 2021</span>
+                    </div>
+                    <p class="experience-company">Santander / PagoNxt – Global</p>
+                    <p class="experience-description">Led a 10-member frontend squad and built a unified Design System with Storybook and CSS modules. Developed micro-frontend applications with React, RxJS, and Webpack. Integrated OAuth2/SSO with Azure AD across multiple internal applications.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Senior Frontend Engineer</h3>
+                        <span class="experience-date">2017 – 2018</span>
+                    </div>
+                    <p class="experience-company">Santander / Getnet</p>
+                    <p class="experience-description">Led a team of three developers to build a frontend application for recurring-charge platforms using Angular, RxJS, and Webpack, improving transaction processing efficiency.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Software Developer</h3>
+                        <span class="experience-date">2004 – 2017</span>
+                    </div>
+                    <p class="experience-company">Multiple Companies – Brazil</p>
+                    <p class="experience-description">Built and maintained web applications across diverse industries, gaining deep expertise in JavaScript, PHP, C, and Java over 13+ years. Evolved from junior to senior roles, developing a strong foundation in software architecture and best practices.</p>
+                </div>
+            </div>
+        </section>
         </main>
         <footer>
             <div class="footer-content">
@@ -147,6 +221,30 @@
         <script>
             // Set current year in footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Resume download dropdown
+            var resumeBtn = document.getElementById('resume-download-btn');
+            var resumeMenu = document.getElementById('resume-dropdown-menu');
+            var resumeLabel = document.getElementById('resume-btn-label');
+
+            // Auto-select language based on browser preference
+            var userLang = navigator.language || navigator.userLanguage || '';
+            if (userLang.toLowerCase().startsWith('pt')) {
+                resumeLabel.textContent = 'Baixar Currículo';
+            }
+
+            resumeBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                resumeMenu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function () {
+                resumeMenu.classList.remove('show');
+            });
+
+            resumeMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
         </script>
 </body>
 </html>
