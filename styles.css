@@ -355,6 +355,23 @@ h2::before { display: none; }
 .post-article-title::after { display: none; }
 .post-article-title::before { display: none; }
 
+.lang-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  border-bottom: none;
+  transition: color 0.15s;
+}
+
+.lang-link:hover {
+  color: var(--color-primary-hover);
+  border-bottom: none;
+}
+
 /* ─── Post Content ───────────────────────────────────────────────────────── */
 .post-content {
   line-height: 1.8;
