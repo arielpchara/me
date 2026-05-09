@@ -10,10 +10,20 @@ Porto Alegre, Rio Grande do Sul, Brasil
 ## Resumo Profissional
 
 Desenvolvedor Fullstack Sênior com mais de 20 anos de experiência em desenvolvimento de software, liderando iniciativas de frontend e backend com forte foco em arquitetura.  
-No Santander/PagoNxt, liderou um squad de 10 desenvolvedores frontend e construiu um Design System unificado com Storybook e CSS modules, promovendo consistência no desenvolvimento de UI em múltiplos projetos globais e reduzindo defeitos de interface. Na South System, arquitetou uma plataforma de monitoramento remoto de dispositivos em tempo real utilizando C#, Node.js e serviços serverless da AWS (Lambda, SQS, SNS, DynamoDB), reduzindo o tempo de integração de novos dispositivos e entregando observabilidade completa à equipe de operações. Mais recentemente na Fanatics (via Avenue Code), implementou novas funcionalidades de API com Go, Temporal e Kafka, e refatorou codebases legadas em Go e React, aumentando a performance e confiabilidade do backend em sistemas orientados a eventos.  
+No Santander/PagoNxt, liderou um squad de 10 desenvolvedores frontend e construiu um Design System unificado com Storybook e CSS modules, promovendo consistência no desenvolvimento de UI em múltiplos projetos globais e reduzindo defeitos de interface. Na South System, arquitetou uma plataforma de monitoramento remoto de dispositivos em tempo real utilizando C#, Node.js e serviços serverless da AWS (Lambda, SQS, SNS, DynamoDB), reduzindo o tempo de integração de novos dispositivos e entregando observabilidade completa à equipe de operações. Na Fanatics (via Avenue Code), implementou novas funcionalidades de API com Go, Temporal e Kafka, e refatorou codebases legadas em Go e React, aumentando a performance e confiabilidade do backend em sistemas orientados a eventos. Atualmente na ADP, atuando como Lead Developer — elaborando RFCs, conduzindo code reviews, analisando métricas de serviço, liderando releases de ponta a ponta e impulsionando melhorias de performance em serviços críticos.  
 Apaixonado por aplicar expertise em arquitetura moderna para impulsionar soluções de software inovadoras, de alta qualidade e escaláveis.
 
 ## Experiência Profissional
+
+**Lead Developer**  
+**ADP**  
+*Mai 2026 – Presente*
+
+- Elaborou RFCs para definir direção técnica e promover alinhamento entre equipes de engenharia.
+- Conduziu code reviews e facilitou discussões de tradeoffs para garantir soluções de alta qualidade e manutenibilidade.
+- Coletou e analisou métricas de serviço para embasar decisões orientadas a dados e medir o impacto de features.
+- Liderou o ciclo completo de releases de funcionalidades, do desenvolvimento e testes até o deploy e monitoramento.
+- Impulsionou melhorias de performance em serviços críticos, aumentando confiabilidade e responsividade.
 
 **Engenheiro Fullstack Sênior**  
 **Fanatics**  

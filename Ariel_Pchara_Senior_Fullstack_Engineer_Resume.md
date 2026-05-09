@@ -10,10 +10,20 @@ Porto Alegre, Rio Grande do Sul, Brazil
 ## Professional Summary
 
 Senior Fullstack Developer with 20+ years of experience in software development, leading frontend and backend initiatives with a strong focus on architecture.  
-At Santander/PagoNxt, led a 10-member frontend squad and built a unified Design System with Storybook and CSS modules, driving consistent UI development across multiple global projects and decreasing UI defects. At South System, architected a real-time remote device monitoring platform using C#, Node.js, and AWS serverless services (Lambda, SQS, SNS, DynamoDB), reducing integration time for new devices and delivering full observability to the operations team. Most recently at Fanatics (via Avenue Code), implemented new API features with Go, Temporal, and Kafka, and refactored legacy Go and React codebases, boosting backend performance and reliability across event-driven systems.  
+At Santander/PagoNxt, led a 10-member frontend squad and built a unified Design System with Storybook and CSS modules, driving consistent UI development across multiple global projects and decreasing UI defects. At South System, architected a real-time remote device monitoring platform using C#, Node.js, and AWS serverless services (Lambda, SQS, SNS, DynamoDB), reducing integration time for new devices and delivering full observability to the operations team. At Fanatics (via Avenue Code), implemented new API features with Go, Temporal, and Kafka, and refactored legacy Go and React codebases, boosting backend performance and reliability across event-driven systems. Currently at ADP, serving as Lead Developer — authoring RFCs, driving code reviews, analyzing service metrics, owning feature releases end-to-end, and leading performance improvements across critical services.  
 Passionate about applying modern architecture expertise to drive innovative, high-quality, and scalable software solutions.
 
 ## Professional Experience
+
+**Lead Developer**  
+**ADP**  
+*May 2026 – Present*
+
+- Authored RFCs to define technical direction and drive alignment across engineering teams.
+- Led code reviews and facilitated tradeoff discussions to ensure high-quality, maintainable solutions.
+- Collected and analyzed service metrics to guide data-driven decisions and measure feature impact.
+- Owned the full feature release lifecycle, from development and testing through deployment and monitoring.
+- Drove targeted performance improvements across critical services, enhancing reliability and responsiveness.
 
 **Senior Fullstack Engineer**  
 **Fanatics**  
