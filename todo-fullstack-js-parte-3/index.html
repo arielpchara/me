@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Fullstack JavaScript To-Do, from Node to React + Webpack (Part 3) · Ariel Pchara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../main.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-content">
+                <h1><i class="ri-code-s-slash-line header-icon"></i> Ariel Pchara</h1>
+                <p>Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</p>
+            </div>
+            <nav class="site-nav">
+                <a href="../index.html" class="nav-link"><i class="ri-article-line"></i> Blog</a>
+                <a href="../profile.html" class="nav-link"><i class="ri-user-5-line"></i> Profile</a>
+            </nav>
+        </header>
+
+        <article class="post-article">
+            <a href="../index.html" class="back-link"><i class="ri-arrow-left-line"></i> Back to blog</a>
+
+            <a href="https://medium.com/@arielpchara/um-to-do-fullstack-javascript-do-node-ao-react-webpack-parte-3-1716a5d49840"
+               class="badge-medium badge-medium--notice"
+               target="_blank" rel="noopener">
+                <i class="ri-medium-line"></i> Originally published on Medium in September 2018
+            </a>
+
+            <div class="post-article-header">
+                <div class="post-meta">
+                    <span class="post-tag">React</span>
+                    <span class="post-tag">Webpack</span>
+                    <span class="post-tag">JavaScript</span>
+                </div>
+                <h2 class="post-article-title">A Fullstack JavaScript To-Do, from Node to React + Webpack — Part 3</h2>
+            </div>
+
+            <div class="post-content">
+                <p>We're back!</p>
+
+                <p>Now that we have our microservice to persist the to-do list data, let's build the interface for this API with the following features: add a new task, toggle its status, remove a task, and filter the list.</p>
+
+                <p>In this article we'll learn how to set up webpack with the bare minimum for a stress-free dev experience, and render a Hello World in React.</p>
+
+                <hr>
+
+                <h3>Setting up the front-end project</h3>
+
+<pre><code class="language-bash"># enter the project folder
+cd fullstack_javascript
+# create the front folder
+mkdir front
+# enter the front folder
+cd front
+# initialize as an NPM module
+npm init -y</code></pre>
+
+                <p>Install the first webpack packages:</p>
+
+<pre><code class="language-bash">npm i -D webpack webpack-cli
+# i = install
+# -D = development-only packages</code></pre>
+
+                <p>Since webpack is installed locally, run it through <em>npm scripts</em> configured in <code>package.json</code>.</p>
+
+                <hr>
+
+                <h3>Configure Webpack</h3>
+
+                <p>Writing "modern" JavaScript requires a transpiler — browsers can't read it natively. The most widely used transpiler is <strong>Babel</strong>, which turns React code into plain JavaScript the browser understands.</p>
+
+                <p><strong>Webpack</strong> doesn't translate the code itself — it orchestrates the translation, optimizes the bundle, handles images, processes CSS, and much more. Check the Plugins list to see what it can do.</p>
+
+                <p>Create <code>webpack.config.js</code> at the root of the front project with the <code>entry</code>, <code>output</code>, and <code>mode</code> fields. The comments in the code explain what each piece does for Webpack.</p>
+
+                <hr>
+
+                <h3>First build</h3>
+
+                <p>Create a file <code>./src/index.js</code> with just <code>console.log('hello')</code> and run:</p>
+
+<pre><code class="language-bash">npm run build</code></pre>
+
+                <p>At the project root create an <code>index.html</code> that references the generated bundle. Open it in the browser, open <em>devtools</em> (<kbd>opt + cmd + i</kbd>), and check the console tab for the <code>"hello"</code> message.</p>
+
+                <hr>
+
+                <h3>Adding Babel and React</h3>
+
+                <p>Install the Babel packages for React support:</p>
+
+<pre><code class="language-bash">npm i -D babel-loader @babel/core @babel/preset-env @babel/preset-react</code></pre>
+
+                <p>In <code>webpack.config.js</code>, add the <code>module</code> configuration to process <code>.js</code> files with <code>babel-loader</code>.</p>
+
+                <p>Now install the React packages:</p>
+
+<pre><code class="language-bash">npm i -S react react-dom
+# -S to save in package.json</code></pre>
+
+                <p>Rewrite <code>./src/index.js</code> with a basic React component using <code>ReactDOM.render</code> and run again:</p>
+
+<pre><code class="language-bash">npm run build</code></pre>
+
+                <p>Open <code>index.html</code> in the browser — you should see a glorious <strong>Hello World</strong> on screen.</p>
+
+                <hr>
+
+                <h3>Conclusion</h3>
+
+                <p>Our application now has two packages: one for the microservice and one for the front end, already powered by webpack for React transpilation.</p>
+
+                <p>We covered how to configure webpack at a minimum — generating browser-readable JavaScript and interpreting React code.</p>
+
+                <p>In the next article we'll build our first component and make the first API request.</p>
+
+                <p class="post-closing">Cheers</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-section">
+                <h3><i class="ri-contacts-line footer-section-icon"></i> Contact</h3>
+                <div class="contact-links">
+                    <a href="mailto:ariel@pchara.com" class="contact-link">
+                        <i class="ri-mail-line"></i> ariel@pchara.com
+                    </a>
+                    <a href="https://linkedin.com/in/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-linkedin-box-line"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-github-line"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="current-year"></span> Ariel Pchara · Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

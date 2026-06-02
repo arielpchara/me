@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Fullstack JavaScript To-Do, from Node to React + Webpack (Part 2) · Ariel Pchara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../main.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-content">
+                <h1><i class="ri-code-s-slash-line header-icon"></i> Ariel Pchara</h1>
+                <p>Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</p>
+            </div>
+            <nav class="site-nav">
+                <a href="../index.html" class="nav-link"><i class="ri-article-line"></i> Blog</a>
+                <a href="../profile.html" class="nav-link"><i class="ri-user-5-line"></i> Profile</a>
+            </nav>
+        </header>
+
+        <article class="post-article">
+            <a href="../index.html" class="back-link"><i class="ri-arrow-left-line"></i> Back to blog</a>
+
+            <a href="https://medium.com/@arielpchara/um-to-do-fullstack-javascript-do-node-ao-react-webpack-parte-2-4a3214360f3b"
+               class="badge-medium badge-medium--notice"
+               target="_blank" rel="noopener">
+                <i class="ri-medium-line"></i> Originally published on Medium in September 2018
+            </a>
+
+            <div class="post-article-header">
+                <div class="post-meta">
+                    <span class="post-tag">Node.js</span>
+                    <span class="post-tag">REST API</span>
+                    <span class="post-tag">JavaScript</span>
+                </div>
+                <h2 class="post-article-title">A Fullstack JavaScript To-Do, from Node to React + Webpack — Part 2</h2>
+            </div>
+
+            <div class="post-content">
+                <p>Continuing our saga, this article explains how to implement the PUT method in our service.</p>
+
+                <p>I hope you've already read and worked through the previous article. If not, check out <a href="../todo-fullstack-js-parte-1/">Part 1</a>.</p>
+
+                <p>Quick recap: our service accepts GET and POST methods, and we can insert new documents into the database and list all items in our collection.</p>
+
+                <hr>
+
+                <h3>The PUT Method</h3>
+
+                <blockquote class="post-blockquote">
+                    <p>The PUT method replaces all current representations of the target resource with the request payload.</p>
+                </blockquote>
+
+                <blockquote class="post-blockquote">
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods</a></p>
+                </blockquote>
+
+                <p>A PUT request carries the document ID in the URL, like <code>/resource/document_id</code>. Since our service responds at the root URL <code>http://localhost:3000/</code>, the PUT will pass the ID like this: <code>http://localhost:3000/document_id</code>.</p>
+
+                <hr>
+
+                <h3>Show me the code!</h3>
+
+                <p>In the code, we import new libs and functions, parse the URL so the server can extract the id from the first URL parameter, and add PUT handling — checking for an existing id and running <code>replaceOne</code> on the database.</p>
+
+                <hr>
+
+                <h3>Validating with Postman</h3>
+
+                <p>First, hit the root endpoint with a GET to get the list of documents. If you don't have any yet, check Part 1 to see how to add one using POST.</p>
+
+                <p>From the list, copy a <code>_id</code> value — we'll use it in our PUT request.</p>
+
+                <p>The request targets <code>localhost:3000/5b8ee8833e2f3fbaa52acc45</code>, where that string is the document's <code>_id</code>. The request body is a JSON with the same keys as the document you want to update.</p>
+
+                <p>After sending the PUT, run GET again and confirm the document has been updated.</p>
+
+                <hr>
+
+                <h3>Conclusion</h3>
+
+                <p>We now have the three HTTP methods we need to build the React application: a to-do list where we can add a task string, toggle its done status, and soft-delete it.</p>
+
+                <p>Deletion will be handled logically — we will <strong>not</strong> remove the document from the database; instead we'll set a <code>removed</code> field to <code>true</code> and simply hide it on the front end. That's why we didn't implement DELETE on our service.</p>
+
+                <p>In the next article we'll configure <em>webpack</em> and render something on screen using React.</p>
+
+                <p class="post-closing">Cheers.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-section">
+                <h3><i class="ri-contacts-line footer-section-icon"></i> Contact</h3>
+                <div class="contact-links">
+                    <a href="mailto:ariel@pchara.com" class="contact-link">
+                        <i class="ri-mail-line"></i> ariel@pchara.com
+                    </a>
+                    <a href="https://linkedin.com/in/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-linkedin-box-line"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-github-line"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="current-year"></span> Ariel Pchara · Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

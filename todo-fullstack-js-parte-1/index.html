@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Fullstack JavaScript To-Do, from Node to React + Webpack (Part 1) · Ariel Pchara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../main.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-content">
+                <h1><i class="ri-code-s-slash-line header-icon"></i> Ariel Pchara</h1>
+                <p>Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</p>
+            </div>
+            <nav class="site-nav">
+                <a href="../index.html" class="nav-link"><i class="ri-article-line"></i> Blog</a>
+                <a href="../profile.html" class="nav-link"><i class="ri-user-5-line"></i> Profile</a>
+            </nav>
+        </header>
+
+        <article class="post-article">
+            <a href="../index.html" class="back-link"><i class="ri-arrow-left-line"></i> Back to blog</a>
+
+            <a href="https://medium.com/@arielpchara/um-to-do-fullstack-javascript-do-node-ao-react-webpack-parte-1-8bbca286715"
+               class="badge-medium badge-medium--notice"
+               target="_blank" rel="noopener">
+                <i class="ri-medium-line"></i> Originally published on Medium in September 2018
+            </a>
+
+            <div class="post-article-header">
+                <div class="post-meta">
+                    <span class="post-tag">Node.js</span>
+                    <span class="post-tag">MongoDB</span>
+                    <span class="post-tag">JavaScript</span>
+                </div>
+                <h2 class="post-article-title">A Fullstack JavaScript To-Do, from Node to React + Webpack — Part 1</h2>
+            </div>
+
+            <div class="post-content">
+                <p>A basic understanding of JavaScript is required to follow this tutorial. It's aimed at anyone who wants to learn about the complete cycle of a 100% JavaScript application.</p>
+
+                <hr>
+
+                <h3>Node.js</h3>
+
+                <p>We'll build a very simple microservice application — no frameworks — connecting to a MongoDB database and handling CORS requests (for when the interface runs on a different domain than the API).</p>
+
+                <p><strong>IMPORTANT:</strong> To start this project you need Node installed. My recommendation is to install it via NVM, which helps you manage Node versions.</p>
+
+                <blockquote class="post-blockquote">
+                    <p>NVM: <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">https://github.com/creationix/nvm</a></p>
+                </blockquote>
+
+                <h3>Why React?</h3>
+
+                <p>It's a very versatile library for building dynamic web interfaces. We'll cover some concepts like: containers, HOC and code splitting.</p>
+
+                <p>To get started I set up a repository with several branches, each one containing a step of the app build.</p>
+
+                <blockquote class="post-blockquote">
+                    <p><a href="https://github.com/arielpchara/full-stack-javascript" target="_blank" rel="noopener">https://github.com/arielpchara/full-stack-javascript</a></p>
+                </blockquote>
+
+                <hr>
+
+                <h3>Starting with the API</h3>
+
+                <p>Like any modern JavaScript application, it needs to be set up as an NPM module. This API requires Node version 8.11.4 — use NVM to update yours.</p>
+
+                <blockquote class="post-blockquote">
+                    <p>NPM is a package manager for JavaScript.</p>
+                </blockquote>
+
+<pre><code class="language-bash"># create the project folder
+mkdir fullstack_javascript
+# enter the project folder
+cd fullstack_javascript
+# create the API folder
+mkdir api
+# enter the API folder
+cd api
+# initialize as an NPM module
+npm init -y</code></pre>
+
+                <p>This will create a <code>package.json</code> file containing module information such as name, version, and description — and it lets you run scripts as well.</p>
+
+                <p>Now add a file called <code>index.js</code> with a simple HTTP server that accepts GET and POST methods.</p>
+
+                <p>To make development easier, it's useful to install <code>nodemon</code>, which detects every code change and restarts the server automatically.</p>
+
+<pre><code class="language-bash">npm i -D nodemon</code></pre>
+
+                <p>To run the locally installed nodemon, add a script to <code>package.json</code>:</p>
+
+<pre><code class="language-json">"scripts": {
+  "dev": "nodemon index.js"
+}</code></pre>
+
+<pre><code class="language-bash">npm run dev</code></pre>
+
+                <hr>
+
+                <h3>Connecting to MongoDB</h3>
+
+                <p>With MongoDB properly installed, let's make the server connect to the database. If you don't have it installed yet, follow the instructions at:</p>
+
+                <blockquote class="post-blockquote">
+                    <p><a href="https://www.mongodb.com/download-center#community" target="_blank" rel="noopener">https://www.mongodb.com/download-center#community</a></p>
+                </blockquote>
+
+                <p>Update <code>index.js</code> to connect to MongoDB, import the driver, and handle each HTTP method. Read the comments in the code to understand what each part does.</p>
+
+                <hr>
+
+                <h3>Handling the POST method</h3>
+
+                <p>To add new documents to our collection, we'll make a POST request. Use Postman to test it:</p>
+
+                <blockquote class="post-blockquote">
+                    <p><a href="https://www.getpostman.com/" target="_blank" rel="noopener">https://www.getpostman.com/</a></p>
+                </blockquote>
+
+                <p>Our service will receive the POST and insert the request body as a new document in the collection. Remember: the POST body must be in JSON format.</p>
+
+                <p>The code also handles unexpected cases, returning a JSON response with an <code>invalid request</code> message.</p>
+
+                <hr>
+
+                <h3>Conclusion</h3>
+
+                <p>We wrapped up this first part with a simple HTTP server that accepts GET and POST — where GET returns all items in the collection and POST creates a new document.</p>
+
+                <p>In the next article we'll add the PUT method to edit documents in the database.</p>
+
+                <p class="post-closing">Cheers!</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-section">
+                <h3><i class="ri-contacts-line footer-section-icon"></i> Contact</h3>
+                <div class="contact-links">
+                    <a href="mailto:ariel@pchara.com" class="contact-link">
+                        <i class="ri-mail-line"></i> ariel@pchara.com
+                    </a>
+                    <a href="https://linkedin.com/in/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-linkedin-box-line"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-github-line"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="current-year"></span> Ariel Pchara · Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

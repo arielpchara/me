@@ -933,6 +933,46 @@ footer::before { display: none; }
   color: var(--color-text-light);
 }
 
+/* ─── Medium Recovery Badge ─────────────────────────────────────────────── */
+.badge-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(26, 137, 23, 0.1);
+  color: #1a8917;
+  border: 1px solid rgba(26, 137, 23, 0.3);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.badge-medium--notice {
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  text-decoration: none;
+  transition: background 0.15s;
+  margin-bottom: var(--space-5);
+}
+
+.badge-medium--notice:hover {
+  background: rgba(26, 137, 23, 0.18);
+  border-bottom: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge-medium {
+    background: rgba(26, 137, 23, 0.12);
+    color: #5cb85c;
+    border-color: rgba(26, 137, 23, 0.4);
+  }
+  .badge-medium--notice:hover {
+    background: rgba(26, 137, 23, 0.2);
+  }
+}
+
 /* ─── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   header h1 { font-size: 1.4rem; }
