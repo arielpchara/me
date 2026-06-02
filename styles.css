@@ -774,13 +774,12 @@ h2::before { display: none; }
 
 .profile-image img {
   object-fit: cover;
-  transform: translateY(-20px);
   filter: none;
   transition: filter 0.3s, transform 0.4s;
 }
 
 .profile-image:hover img {
-  transform: scale(1.02) translateY(-20px);
+  transform: scale(1.2);
 }
 
 .resume-cta {
