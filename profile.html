@@ -273,13 +273,6 @@
             // Resume download dropdown
             var resumeBtn = document.getElementById('resume-download-btn');
             var resumeMenu = document.getElementById('resume-dropdown-menu');
-            var resumeLabel = document.getElementById('resume-btn-label');
-
-            // Auto-select language based on browser preference
-            var userLang = navigator.language || navigator.userLanguage || '';
-            if (userLang.toLowerCase().startsWith('pt')) {
-                resumeLabel.textContent = 'Baixar Currículo';
-            }
 
             resumeBtn.addEventListener('click', function (e) {
                 e.stopPropagation();
