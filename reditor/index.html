@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reditor: edit files from your server in the browser · Ariel Pchara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../main.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-content">
+                <h1><i class="ri-code-s-slash-line header-icon"></i> Ariel Pchara</h1>
+                <p>Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</p>
+            </div>
+            <nav class="site-nav">
+                <a href="../index.html" class="nav-link"><i class="ri-article-line"></i> Blog</a>
+                <a href="../profile.html" class="nav-link"><i class="ri-user-5-line"></i> Profile</a>
+            </nav>
+        </header>
+
+        <article class="post-article">
+            <a href="../index.html" class="back-link"><i class="ri-arrow-left-line"></i> Back to blog</a>
+
+            <div class="post-article-header">
+                <div class="post-meta">
+                    <span class="post-tag">CLI</span>
+                    <span class="post-tag">DevOps</span>
+                    <span class="post-tag">TypeScript</span>
+                </div>
+                <h2 class="post-article-title">Reditor: edit files from your server in the browser</h2>
+            </div>
+
+            <div class="post-content">
+                <p>SSH into a box. Fight vim. Save a YAML file. Or serve the file on the box, tunnel from your laptop, and edit it in the browser.</p>
+                <p>That's <strong>Reditor</strong> — a small CLI that starts a localhost editor on the server. From your laptop you open an SSH tunnel and edit in a real browser, with syntax highlighting and ⌘S / Ctrl+S. No clone. No IDE. No OTP unless you ask for it.</p>
+
+                <hr>
+
+                <h3>Why</h3>
+
+                <p>Editing a config on a remote machine should not mean wrestling a shell editor over SSH. I wanted something I could drop on a box, aimed at DevOps engineers and anyone who needs to change a file without cloning a repo or installing an editor remotely.</p>
+                <p>SSH is the lock. Keep <code>serve</code> bound to localhost. The tunnel is the way in.</p>
+
+                <hr>
+
+                <h3>Quick start</h3>
+
+                <p>Requires Node.js 18 or newer. Recommended: tunnel from your laptop so the editor stays on localhost on the server.</p>
+
+<pre><code class="language-bash"># On the server
+npx reditor serve /etc/nginx/nginx.conf
+
+# On your laptop — leave this running
+npx reditor tunnel user@that-server --port=8080</code></pre>
+
+                <p>The editor opens at <code>http://localhost:8080</code> when the tunnel is up. Edit. Hit <strong>⌘S</strong> / <strong>Ctrl+S</strong>.</p>
+                <p>The tunnel stays up if you stop and restart <code>serve</code>. Switch files on the server without resetting SSH.</p>
+                <p>Same machine, no SSH:</p>
+
+<pre><code class="language-bash">npx reditor serve ./config.yaml
+# then open http://localhost:3000</code></pre>
+
+                <p>Not on npm yet? Run it straight from GitHub:</p>
+
+<pre><code class="language-bash">npx github:arielpchara/reditor-v2 serve ./config.yaml
+npx github:arielpchara/reditor-v2 tunnel user@that-server --port=8080</code></pre>
+
+                <hr>
+
+                <h3>What you get</h3>
+
+                <ul>
+                    <li><strong>Browser editor</strong> — syntax highlighting from the file extension (<code>yaml</code>, <code>json</code>, <code>nginx.conf</code>, and more)</li>
+                    <li><strong>Save from the browser</strong> — one click or ⌘S / Ctrl+S; the button stays off until the file is dirty</li>
+                    <li><strong>Session history</strong> — restore earlier saves from this run without leaving the page</li>
+                    <li><strong>Status bar</strong> — serve state, tunnel, directory, host, and port</li>
+                    <li><strong>Fail-fast validation</strong> — refuses directories, binary files, and anything over 512 KB</li>
+                    <li><strong>Zero install</strong> — <code>npx reditor serve &lt;file&gt;</code> / <code>npx reditor tunnel &lt;target&gt;</code></li>
+                </ul>
+
+                <hr>
+
+                <h3>Security</h3>
+
+                <p>OTP is off by default. Access is SSH: keep <code>serve</code> on localhost and <code>tunnel</code> from your laptop.</p>
+                <p>Pass <code>--enable-security</code> if you bind <code>serve</code> without a tunnel. That prints a 6-digit OTP, exchanges it for an RS256 JWT, and exits the process after three bad attempts. TLS is separate — HTTP is the default; pass <code>--https</code> if you want it.</p>
+
+                <blockquote class="post-blockquote">
+                    <p>SSH is the lock. OTP is opt-in. Don't expose the editor on 0.0.0.0 unless you know why.</p>
+                </blockquote>
+
+                <hr>
+
+                <h3>Try it</h3>
+
+                <p>Source: <a href="https://github.com/arielpchara/reditor-v2" target="_blank" rel="noopener">github.com/arielpchara/reditor-v2</a></p>
+                <p>There is a Docker demo in the repo if you want to try the tunnel path without a remote box. <code>serve</code> binds 127.0.0.1 inside the container — HTTP is not published. The only way in is SSH, then <code>reditor tunnel</code>.</p>
+                <p>The rebuild story — architecture first, AI as copilot, under 24 hours — is in <a href="../ai-as-copilot-reditor/">I rebuilt a project from scratch in under 24 hours</a>. This post is the product. That one is the process.</p>
+
+                <hr>
+
+                <p class="post-closing">Serve on the box. Tunnel from the laptop. Edit in the browser.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-section">
+                <h3><i class="ri-contacts-line footer-section-icon"></i> Contact</h3>
+                <div class="contact-links">
+                    <a href="mailto:ariel@pchara.com" class="contact-link">
+                        <i class="ri-mail-line"></i> ariel@pchara.com
+                    </a>
+                    <a href="https://linkedin.com/in/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-linkedin-box-line"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/arielpchara" target="_blank" rel="noopener" class="contact-link">
+                        <i class="ri-github-line"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="current-year"></span> Ariel Pchara · Senior Fullstack Engineer | React & Node.js Specialist | TypeScript, Microservices, AWS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
