@@ -93,14 +93,14 @@ Rendered by `shared/components/markdown/Markdown.tsx`, which maps Markdown onto 
 
 ## Design Theme
 
-Two themes, dark and light, and an optional charcoal palette on top of either. Dark is deep indigo, never black; light is a soft lavender white. Both have gradients on a fixed background layer, a periwinkle/indigo primary and an amber accent. Boxless: sections are separated by space and hairlines, not rounded cards.
+Two themes, dark and light, in the charcoal, tan, taupe and marsala palette. Dark is deep charcoal, never black; light is a soft taupe white. Both have gradients on a fixed background layer, a tan primary and a marsala accent. Boxless: sections are separated by space and hairlines, not rounded cards.
 
 ### Themes
-- Dark tokens are on `:root`; light tokens override them in `:root[data-theme='light']`; the charcoal palette sits in `:root[data-palette='charcoal']` (its dark variant) and `:root[data-palette='charcoal'][data-theme='light']`, all in `src/styles/global.css`. A new color token needs a value in all four. Charcoal is charcoal, tan, taupe and marsala. 
-- A script in the root `index.html` sets `data-theme` on `<html>` before the first paint: the saved choice (`localStorage` key `theme`), else the system's `prefers-color-scheme`, else dark. It also sets `data-palette` from `localStorage` key `palette` (`charcoal`).
-- `useTheme` reads and sets it; `ThemeSwitch` (in the header menu) is `[moon] [switch] [sun]`, a `role="switch"` button that is on for light, followed by a leaf button that toggles the charcoal palette, independently of the switch. On phones ≤400px the moon and sun hide in the bar.
+- Dark tokens are on `:root`; light tokens override them in `:root[data-theme='light']`, both in `src/styles/global.css`. A new color token needs a value in both.
+- A script in the root `index.html` sets `data-theme` on `<html>` before the first paint: the saved choice (`localStorage` key `theme`), else the system's `prefers-color-scheme`, else dark.
+- `useTheme` reads and sets it; `ThemeSwitch` (in the header menu) is `[moon] [switch] [sun]`, a `role="switch"` button that is on for light. On phones ≤400px the moon and sun hide in the bar.
 - Code blocks stay dark in every theme.
-- Light-theme and light-charcoal text colors must keep at least 4.5:1 contrast against the light background.
+- Light-theme text colors must keep at least 4.5:1 contrast against the light background.
 
 All design tokens (color, gradient, space, layout, type) are custom properties on `:root` in `src/styles/global.css`. **Never** use raw color values outside `:root`; always reference a token.
 

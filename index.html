@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ariel Pchara</title>
     <script>
-        // Sets the theme and palette before the first paint: the saved choice, else the system's.
+        // Sets the theme before the first paint: the saved choice, else the system's.
         try {
             var saved = localStorage.getItem('theme');
-            var root = document.documentElement;
             var theme = saved === 'light' || saved === 'dark' ? saved
                 : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-            root.dataset.theme = theme;
-            if (localStorage.getItem('palette') === 'charcoal') root.dataset.palette = 'charcoal';
+            document.documentElement.dataset.theme = theme;
         } catch (e) {}
     </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">

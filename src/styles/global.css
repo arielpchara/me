@@ -40,41 +40,41 @@ input, button, textarea, select {
 :root {
   color-scheme: dark;
 
-  /* Surfaces: deep ink-indigo, never black */
-  --color-bg:             #1a1d33;
-  --color-bg-secondary:   rgba(255,255,255,0.06);
-  --color-bg-raised:      #262a47;
-  --color-bar:            rgba(26,29,51,0.8);
-  --color-bg-code:        #14162a;
-  --color-border:         rgba(255,255,255,0.1);
-  --color-border-hover:   rgba(255,255,255,0.22);
+  /* Surfaces: deep charcoal */
+  --color-bg:             #212a31;
+  --color-bg-secondary:   rgba(210,210,200,0.06);
+  --color-bg-raised:      #2a343c;
+  --color-bar:            rgba(33,42,49,0.8);
+  --color-bg-code:        #192026;
+  --color-border:         rgba(210,210,200,0.14);
+  --color-border-hover:   rgba(210,210,200,0.3);
 
   /* Text */
-  --color-text:           #eceef8;
-  --color-text-muted:     #b8bdd6;
-  --color-text-light:     #9aa0bd;
-  --color-on-primary:     #ffffff;
+  --color-text:           #ecece6;
+  --color-text-muted:     #d2d2c8;
+  --color-text-light:     #a9aea8;
+  --color-on-primary:     #192026;
 
   /* Brand */
-  --color-primary:        #a3aeff;
-  --color-primary-hover:  #c3cbff;
-  --color-primary-light:  rgba(163,174,255,0.12);
-  --color-primary-line:   rgba(163,174,255,0.4);
-  --color-accent:         #f7b267;
-  --color-tag-text:       #c6cbe2;
-  --color-success:        #86dc95;
-  --color-diagram:        #b8bdd6;
-  --color-shadow:         rgba(10,12,30,0.28);
-  --color-shadow-hover:   rgba(10,12,30,0.5);
+  --color-primary:        #c4a46a;
+  --color-primary-hover:  #dcc08a;
+  --color-primary-light:  rgba(196,164,106,0.14);
+  --color-primary-line:   rgba(196,164,106,0.4);
+  --color-accent:         #d98a72;
+  --color-tag-text:       #d2d2c8;
+  --color-success:        #9cc59a;
+  --color-diagram:        #d2d2c8;
+  --color-shadow:         rgba(8,12,16,0.3);
+  --color-shadow-hover:   rgba(8,12,16,0.5);
 
   /* Gradients */
   --gradient-page:
-    radial-gradient(70rem 42rem at 8% -8%, rgba(99,102,241,0.3), transparent 70%),
-    radial-gradient(56rem 38rem at 100% 8%, rgba(20,184,166,0.15), transparent 70%),
-    radial-gradient(64rem 48rem at 85% 105%, rgba(217,70,139,0.14), transparent 70%),
-    linear-gradient(165deg, #1b1e36 0%, #1f1c3a 52%, #17242f 100%);
-  --gradient-primary:  linear-gradient(135deg, #4f5ee8 0%, #7147dc 100%);
-  --gradient-rule:     linear-gradient(90deg, transparent, rgba(163,174,255,0.42), transparent);
+    radial-gradient(70rem 42rem at 8% -8%, rgba(105,83,44,0.45), transparent 70%),
+    radial-gradient(56rem 38rem at 100% 8%, rgba(210,210,200,0.08), transparent 70%),
+    radial-gradient(64rem 48rem at 85% 105%, rgba(124,62,46,0.4), transparent 70%),
+    linear-gradient(165deg, #263139 0%, #212a31 52%, #1c242a 100%);
+  --gradient-primary:  linear-gradient(135deg, #c4a46a 0%, #8c7240 100%);
+  --gradient-rule:     linear-gradient(90deg, transparent, rgba(196,164,106,0.42), transparent);
 
   /* Radius */
   --radius-sm:   4px;
@@ -118,72 +118,6 @@ input, button, textarea, select {
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --color-bg:             #f4f5fb;
-  --color-bg-secondary:   rgba(27,30,54,0.06);
-  --color-bg-raised:      #ffffff;
-  --color-bar:            rgba(244,245,251,0.8);
-  --color-border:         rgba(27,30,54,0.12);
-  --color-border-hover:   rgba(27,30,54,0.28);
-
-  --color-text:           #1b1e36;
-  --color-text-muted:     #474c68;
-  --color-text-light:     #666b88;
-
-  --color-primary:        #3b49df;
-  --color-primary-hover:  #2a36b8;
-  --color-primary-light:  rgba(59,73,223,0.1);
-  --color-primary-line:   rgba(59,73,223,0.4);
-  --color-accent:         #9a4d00;
-  --color-tag-text:       #474c68;
-  --color-success:        #1e7a3b;
-  --color-diagram:        #474c68;
-  --color-shadow:         rgba(27,30,80,0.1);
-  --color-shadow-hover:   rgba(27,30,80,0.2);
-
-  --gradient-page:
-    radial-gradient(70rem 42rem at 8% -8%, rgba(99,102,241,0.2), transparent 70%),
-    radial-gradient(56rem 38rem at 100% 8%, rgba(20,184,166,0.12), transparent 70%),
-    radial-gradient(64rem 48rem at 85% 105%, rgba(217,70,139,0.1), transparent 70%),
-    linear-gradient(165deg, #f6f7fd 0%, #eef0fb 52%, #eaf3f6 100%);
-  --gradient-rule:     linear-gradient(90deg, transparent, rgba(59,73,223,0.35), transparent);
-}
-
-/* Charcoal palette (charcoal, tan, taupe, marsala), on top of the dark or light theme. */
-:root[data-palette='charcoal'] {
-  --color-bg:             #212a31;
-  --color-bg-secondary:   rgba(210,210,200,0.06);
-  --color-bg-raised:      #2a343c;
-  --color-bar:            rgba(33,42,49,0.8);
-  --color-bg-code:        #192026;
-  --color-border:         rgba(210,210,200,0.14);
-  --color-border-hover:   rgba(210,210,200,0.3);
-
-  --color-text:           #ecece6;
-  --color-text-muted:     #d2d2c8;
-  --color-text-light:     #a9aea8;
-  --color-on-primary:     #192026;
-
-  --color-primary:        #c4a46a;
-  --color-primary-hover:  #dcc08a;
-  --color-primary-light:  rgba(196,164,106,0.14);
-  --color-primary-line:   rgba(196,164,106,0.4);
-  --color-accent:         #d98a72;
-  --color-tag-text:       #d2d2c8;
-  --color-success:        #9cc59a;
-  --color-diagram:        #d2d2c8;
-  --color-shadow:         rgba(8,12,16,0.3);
-  --color-shadow-hover:   rgba(8,12,16,0.5);
-
-  --gradient-page:
-    radial-gradient(70rem 42rem at 8% -8%, rgba(105,83,44,0.45), transparent 70%),
-    radial-gradient(56rem 38rem at 100% 8%, rgba(210,210,200,0.08), transparent 70%),
-    radial-gradient(64rem 48rem at 85% 105%, rgba(124,62,46,0.4), transparent 70%),
-    linear-gradient(165deg, #263139 0%, #212a31 52%, #1c242a 100%);
-  --gradient-primary:  linear-gradient(135deg, #c4a46a 0%, #8c7240 100%);
-  --gradient-rule:     linear-gradient(90deg, transparent, rgba(196,164,106,0.42), transparent);
-}
-
-:root[data-palette='charcoal'][data-theme='light'] {
   --color-bg:             #e6e6de;
   --color-bg-secondary:   rgba(33,42,49,0.06);
   --color-bg-raised:      #f0f0ea;
@@ -628,34 +562,6 @@ header.header--live {
 
 .theme-switch[aria-checked='true'] .theme-switch-thumb {
   transform: translateX(1rem);
-}
-
-/* Palette button: the charcoal palette. */
-.theme-palette {
-  display: inline-flex;
-  margin-left: var(--space-1);
-  padding: var(--space-1);
-  border: 0;
-  border-radius: var(--radius-sm);
-  background: none;
-  color: var(--color-text-light);
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: color 0.15s;
-}
-
-.theme-palette:hover {
-  color: var(--color-text);
-}
-
-.theme-palette[aria-pressed='true'] {
-  color: var(--color-accent);
-}
-
-.theme-palette:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
 
 /* ─── Section Headings ───────────────────────────────────────────────────── */
@@ -1529,13 +1435,6 @@ footer {
   .header--compact .nav-link i,
   .header--navbar .nav-link i {
     font-size: 1.125rem;
-  }
-
-  .header--compact .theme-palette,
-  .header--navbar .theme-palette {
-    margin-left: 0;
-    padding-inline: 0;
-    font-size: 0.875rem;
   }
 
   .header--compact .theme-switch,

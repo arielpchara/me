@@ -1,10 +1,8 @@
 import { useCallback, useSyncExternalStore } from 'react';
 
 export type Theme = 'dark' | 'light';
-export type Palette = 'default' | 'charcoal';
 
-const THEME_KEY = 'theme';
-const PALETTE_KEY = 'palette';
+const STORAGE_KEY = 'theme';
 const listeners = new Set<() => void>();
 
 function subscribe(listener: () => void): () => void {
@@ -12,40 +10,27 @@ function subscribe(listener: () => void): () => void {
   return () => listeners.delete(listener);
 }
 
-// The page script in index.html sets data-theme and data-palette before the first paint.
-function getTheme(): Theme {
+// The page script in index.html sets data-theme before the first paint.
+function getSnapshot(): Theme {
   return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
 }
 
-function getPalette(): Palette {
-  return document.documentElement.dataset.palette === 'charcoal' ? 'charcoal' : 'default';
+function getServerSnapshot(): Theme {
+  return 'dark';
 }
 
-function remember(key: string, value: string): void {
-  try {
-    localStorage.setItem(key, value);
-  } catch {
-    // Private mode: the choice just lasts for this visit.
-  }
-}
-
-/** Dark or light, and independently the default or charcoal palette. */
 export function useTheme() {
-  const theme = useSyncExternalStore(subscribe, getTheme, () => 'dark' as Theme);
-  const palette = useSyncExternalStore(subscribe, getPalette, () => 'default' as Palette);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const setTheme = useCallback((next: Theme) => {
     document.documentElement.dataset.theme = next;
-    remember(THEME_KEY, next);
+    try {
+      localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      // Private mode: the choice just lasts for this visit.
+    }
     listeners.forEach((listener) => listener());
   }, []);
 
-  const setPalette = useCallback((next: Palette) => {
-    if (next === 'default') delete document.documentElement.dataset.palette;
-    else document.documentElement.dataset.palette = next;
-    remember(PALETTE_KEY, next);
-    listeners.forEach((listener) => listener());
-  }, []);
-
-  return { theme, setTheme, palette, setPalette };
+  return { theme, setTheme };
 }
