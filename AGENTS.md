@@ -107,7 +107,7 @@ All design tokens (color, gradient, space, layout, type) are custom properties o
 
 `shared/components/layout/Header.tsx` has two variants, chosen by the route's `Layout`:
 
-- **`hero`** (blog and profile): name on the left, bordered circular picture centered in the right half, 60% of the viewport tall, menu centered below it.
+- **`hero`** (blog and profile): name on the left, bordered circular picture centered in the right half, 60% of the viewport tall, menu centered below it. On phones (≤768px) it stacks: picture centered on top, then role, name and subtitle as a box centered on the page with its text aligned left.
 - **`compact`** (posts and 404): sticky translucent bar with avatar, `[name] [role]` on the first line (role in the accent color at half the name's size, on the same baseline), subtitle below, and menu. On phones the role takes the second line instead of the subtitle.
 
 `useHeroMorph` drives the hero on scroll by setting CSS variables, and CSS does the rest (`header.header--live` in `global.css`):

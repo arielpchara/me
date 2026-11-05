@@ -1236,18 +1236,38 @@ footer {
     --text-read: 1.0625rem;
   }
 
-  /* Hero: name on the left, picture and menu on the right. */
+  /* Hero, stacked: the picture on top, centered; below it the text as a box centered
+     on the page, with its lines aligned left inside the box. */
   :root {
+    --hero-h: max(60vh, 28rem);
     --bar-h: 3rem;
     --bar-name: 1rem;
-    --photo-w: 50%;
-    --photo-size: min(calc(var(--hero-h) * 0.7), calc(50vw - 5rem)); /* clear of the name */
+    --photo-size: min(10rem, 45vw);
+    --photo-top: var(--space-6);
+    --photo-text-gap: var(--space-6);
   }
 
-  header {
-    align-items: flex-end;
-    padding-inline: var(--gutter) 40%;
-    padding-bottom: var(--space-5);
+  header:not(.header--compact) {
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--photo-top) + var(--photo-size) + var(--photo-text-gap)) var(--gutter) var(--space-6);
+  }
+
+  /* While morphing, the contents are positioned by the script; padding would stop the bar shrinking. */
+  header.header--live {
+    padding: 0;
+  }
+
+  header:not(.header--compact) .header-content {
+    width: fit-content;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .header-photo {
+    top: var(--photo-top);
+    right: auto;
+    left: calc(50% - var(--photo-size) / 2);
   }
 
   .site-nav { gap: var(--space-4); }
