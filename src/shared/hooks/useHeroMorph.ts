@@ -4,6 +4,7 @@ const SNAP_DELAY_MS = 50;
 const MIN_SNAP_SPEED = 0.4; // px per ms
 const MAX_SNAP_SPEED = 3;
 const DIMMED_PAGE_OPACITY = 0.6;
+const BAR_GAP_REM = 3; // keep in step with --bar-gap
 const ROLE_GAP = 8; // px between the name and the role while they travel
 const ROLE_CLEAR_P = 0.15; // morph progress by which the role has slid past the name
 
@@ -125,6 +126,7 @@ export function useHeroMorph(ref: RefObject<HTMLElement | null>, enabled: boolea
       if (!active) return;
       header.classList.remove('header--live', 'header--bar', 'header--navbar');
       const hero = snapshot();
+      const pageTop = (header.nextElementSibling as HTMLElement | null)?.getBoundingClientRect().top ?? 0;
       header.classList.add('header--compact');
       const bar = snapshot();
       header.classList.remove('header--compact');
@@ -170,7 +172,9 @@ export function useHeroMorph(ref: RefObject<HTMLElement | null>, enabled: boolea
       roleXAt = roleBelowName
         ? (p) => roleEndX * p
         : (p) => (p < ROLE_CLEAR_P ? (p / ROLE_CLEAR_P) * clearOfName(ROLE_CLEAR_P) : clearOfName(p));
-      range = Math.max(hero.height - bar.height, 1);
+      // The bar is fully on once the page content sits one bar gap below it.
+      const barGap = parseFloat(getComputedStyle(document.documentElement).fontSize) * BAR_GAP_REM;
+      range = Math.max(pageTop + window.scrollY - bar.height - barGap, 1);
       setVar('range', `${range}px`);
       header.classList.add('header--live');
       update();

@@ -113,6 +113,7 @@ All design tokens (color, gradient, space, layout, type) are custom properties o
 `useHeroMorph` drives the hero on scroll by setting CSS variables, and CSS does the rest (`header.header--live` in `global.css`):
 - `--p` runs from 0 (hero) to 1 (bar); the hook measures both ends from the real CSS.
 - The name, role and subtitle travel into the bar in view. The subtitle dips out only while its line break switches.
+- The morph ends (`--p` = 1) when the page content sits `--bar-gap` (3rem) below the bar, the same gap post pages have.
 - The picture fades and leaves upward at 1.5× scroll speed, the menu moves up and fades, then returns in the bar.
 - The page below sits at 60% opacity while the hero is fully visible, clearing to 100% in the bar.
 - A click on the hero's menu scrolls until the hero is gone and the bar is on, including on the current page's link (`hideHero` in the location state).
