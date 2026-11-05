@@ -4,6 +4,8 @@ const SNAP_DELAY_MS = 50;
 const MIN_SNAP_SPEED = 0.4; // px per ms
 const MAX_SNAP_SPEED = 3;
 const DIMMED_PAGE_OPACITY = 0.6;
+const ROLE_GAP = 8; // px between the name and the role while they travel
+const ROLE_CLEAR_P = 0.15; // morph progress by which the role has slid past the name
 
 interface Box {
   x: number;
@@ -26,8 +28,19 @@ function jumpTo(top: number): void {
   window.scrollTo({ top, behavior: 'instant' });
 }
 
+function textWidth(el: Element): number {
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  return range.getBoundingClientRect().width;
+}
+
 function isShown(el: Element): boolean {
   return el.getClientRects().length > 0;
+}
+
+/** The scroll position where the hero is fully gone and the bar is on. */
+export function heroScrollRange(header: HTMLElement): number {
+  return Math.ceil(parseFloat(header.style.getPropertyValue('--range')) || 0);
 }
 
 /**
@@ -51,8 +64,9 @@ export function useHeroMorph(ref: RefObject<HTMLElement | null>, enabled: boolea
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const rootStyle = document.documentElement.style;
     let range = 1;
-    let roleInBar = true;
     let stackInBar = true;
+    let roleBelowName = false;
+    let roleXAt = (_p: number) => 0;
     let updateFrame = 0;
     let active = true;
 
@@ -69,7 +83,6 @@ export function useHeroMorph(ref: RefObject<HTMLElement | null>, enabled: boolea
         nameFont: fontSize(name),
         roleFont: fontSize(role),
         stackFont: fontSize(stack),
-        roleShown: isShown(role),
         stackShown: isShown(stack),
       };
     };
@@ -91,15 +104,19 @@ export function useHeroMorph(ref: RefObject<HTMLElement | null>, enabled: boolea
       // The surname clears "Ariel" sideways before rising, so the words never collide.
       setVar('p-side', Math.min(p / 0.5, 1));
       setVar('p-rise', Math.max((p - 0.5) / 0.5, 0));
-      // The role crosses the name on its way down: gone by the midpoint, back once the name settles.
-      setVar('role-o', p < 0.5 ? 1 - p * 2 : roleInBar ? Math.max((p - 0.85) / 0.15, 0) : 0);
-      // The subtitle becomes one line in the bar: it fades out while it travels, switches
-      // text while hidden, and returns once it lands. On phones it just fades away.
+      // The role rides beside the name into the bar. On phones it ends up below the name,
+      // so it fades while it crosses and returns once the name settles.
+      setVar('role-tx', `${roleXAt(p)}px`);
+      const roleFade = p < 0.1 ? 1 - p * 10 : Math.max((p - 0.95) / 0.05, 0);
+      setVar('role-o', roleBelowName ? roleFade : 1);
+      // The subtitle travels in view and becomes one line in the bar: it dips out only around
+      // the moment the line break switches. On phones it just fades away.
       header.classList.toggle('header--bar', stackInBar && p >= 0.7);
       // The menu leaves upward with the hero's bottom edge, then returns in the bar.
       header.classList.toggle('header--navbar', p >= 0.5);
       setVar('nav-o', p < 0.5 ? Math.max(1 - p * 3, 0) : Math.max((p - 0.85) / 0.15, 0));
-      const stackOpacity = p < 0.5 ? 1 - p * 2 : p < 0.85 ? 0 : (p - 0.85) / 0.15;
+      const stackOpacity =
+        p < 0.55 ? 1 : p < 0.7 ? 1 - (p - 0.55) / 0.15 : Math.min((p - 0.7) / 0.15, 1);
       setVar('stack-o', stackInBar ? stackOpacity : Math.max(1 - p * 2.5, 0));
     };
 
@@ -127,18 +144,32 @@ export function useHeroMorph(ref: RefObject<HTMLElement | null>, enabled: boolea
         'name-y': bar.name.y + bar.name.h / 2 - (hero.name.y + (scale * line) / 2),
         'surname-x': (bar.surname.x - bar.name.x) / scale,
         'surname-y': -line,
-        'role-x': bar.roleShown ? bar.role.x - hero.role.x : 0,
-        'role-y': bar.roleShown ? bar.role.y - hero.role.y : 0,
+        'role-y': bar.role.y - hero.role.y,
         'stack-x': bar.stackShown ? bar.stack.x - hero.stack.x : 0,
         'stack-y': bar.stackShown ? bar.stack.y - hero.stack.y : 0,
       };
       Object.entries(px).forEach(([key, value]) => setVar(key, `${value}px`));
       setVar('name-s', scale);
-      setVar('role-s', bar.roleShown ? bar.roleFont / hero.roleFont : 1);
+      setVar('role-s', bar.roleFont / hero.roleFont);
       setVar('stack-s', bar.stackShown ? bar.stackFont / hero.stackFont : 1);
 
-      roleInBar = bar.roleShown;
       stackInBar = bar.stackShown;
+      roleBelowName = bar.role.y > bar.name.y + bar.name.h / 2;
+
+      const roleEndX = bar.role.x - hero.role.x;
+      const surnameW = textWidth(surname);
+      // Translation that puts the role just past the right edge of the morphing name.
+      const besideName = (p: number) =>
+        hero.name.x +
+        (bar.name.x - hero.name.x) * p +
+        (1 + (scale - 1) * p) * (((bar.surname.x - bar.name.x) / scale) * Math.min(p / 0.5, 1) + surnameW) +
+        ROLE_GAP -
+        hero.role.x;
+      const endError = roleEndX - besideName(1);
+      const clearOfName = (p: number) => besideName(p) + endError * p;
+      roleXAt = roleBelowName
+        ? (p) => roleEndX * p
+        : (p) => (p < ROLE_CLEAR_P ? (p / ROLE_CLEAR_P) * clearOfName(ROLE_CLEAR_P) : clearOfName(p));
       range = Math.max(hero.height - bar.height, 1);
       setVar('range', `${range}px`);
       header.classList.add('header--live');
@@ -163,7 +194,8 @@ export function useHeroMorph(ref: RefObject<HTMLElement | null>, enabled: boolea
 
     const snap = () => {
       const from = window.scrollY;
-      if (from <= 0 || from >= range) return;
+      // Scroll positions can round just below the fractional range: that's still the bar.
+      if (from <= 0 || from >= range - 1) return;
       const target = direction >= 0 ? range : 0;
       if (reduceMotion.matches) {
         jumpTo(target);

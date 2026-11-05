@@ -9,13 +9,16 @@ interface LayoutProps {
 }
 
 export function Layout({ variant }: LayoutProps) {
-  const { pathname } = useLocation();
+  const { pathname, key, state } = useLocation();
   const navigationType = useNavigationType();
 
-  // New pages open at the top; back and forward keep the browser's scroll position.
+  // New pages open at the top, unless the hero's menu asked to hide the hero (see Header).
+  // Back and forward keep the browser's scroll position.
   useLayoutEffect(() => {
-    if (navigationType !== 'POP') window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [pathname, navigationType]);
+    if (navigationType !== 'POP' && !state?.hideHero) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [key, state, navigationType]);
 
   useEffect(() => {
     document.title = titleFor(pathname);

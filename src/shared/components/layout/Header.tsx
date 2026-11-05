@@ -1,7 +1,7 @@
-import { useRef } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useLayoutEffect, useRef } from 'react';
+import { Link, NavLink, useLocation, useNavigationType } from 'react-router-dom';
 import photo from '@/assets/header-photo.jpg';
-import { useHeroMorph } from '@/shared/hooks/useHeroMorph';
+import { heroScrollRange, useHeroMorph } from '@/shared/hooks/useHeroMorph';
 
 export type HeaderVariant = 'hero' | 'compact';
 
@@ -17,6 +17,19 @@ export function Header({ variant }: HeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
   const isHero = variant === 'hero';
   useHeroMorph(headerRef, isHero);
+
+  const location = useLocation();
+  const navigationType = useNavigationType();
+  const hideHero = (location.state as { hideHero?: boolean } | null)?.hideHero;
+
+  // A click on the hero's menu scrolls until the hero is gone and the bar is on.
+  useLayoutEffect(() => {
+    if (hideHero && navigationType !== 'POP' && headerRef.current) {
+      window.scrollTo({ top: heroScrollRange(headerRef.current) });
+    }
+  }, [location.key, hideHero, navigationType]);
+
+  const menuState = isHero ? { hideHero: true } : undefined;
 
   return (
     <header ref={headerRef} className={isHero ? undefined : 'header--compact'}>
@@ -46,10 +59,10 @@ export function Header({ variant }: HeaderProps) {
         </p>
       </div>
       <nav className="site-nav">
-        <NavLink to="/" end className={navLinkClass}>
+        <NavLink to="/" end state={menuState} className={navLinkClass}>
           <i className="ri-article-line"></i> Blog
         </NavLink>
-        <NavLink to="/profile/" className={navLinkClass}>
+        <NavLink to="/profile/" state={menuState} className={navLinkClass}>
           <i className="ri-user-5-line"></i> Profile
         </NavLink>
       </nav>

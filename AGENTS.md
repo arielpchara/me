@@ -108,12 +108,14 @@ All design tokens (color, gradient, space, layout, type) are custom properties o
 `shared/components/layout/Header.tsx` has two variants, chosen by the route's `Layout`:
 
 - **`hero`** (blog and profile): name on the left, bordered circular picture centered in the right half, 60% of the viewport tall, menu centered below it.
-- **`compact`** (posts and 404): sticky translucent bar with avatar, name, subtitle and menu.
+- **`compact`** (posts and 404): sticky translucent bar with avatar, `[name] [role]` on the first line (role in the accent color at half the name's size, on the same baseline), subtitle below, and menu. On phones the role takes the second line instead of the subtitle.
 
 `useHeroMorph` drives the hero on scroll by setting CSS variables, and CSS does the rest (`header.header--live` in `global.css`):
 - `--p` runs from 0 (hero) to 1 (bar); the hook measures both ends from the real CSS.
+- The name, role and subtitle travel into the bar in view. The subtitle dips out only while its line break switches.
 - The picture fades and leaves upward at 1.5× scroll speed, the menu moves up and fades, then returns in the bar.
 - The page below sits at 60% opacity while the hero is fully visible, clearing to 100% in the bar.
+- A click on the hero's menu scrolls until the hero is gone and the bar is on, including on the current page's link (`hideHero` in the location state).
 - Scroll snap: 50ms after the last scroll movement, a half-morphed hero finishes in the reader's direction at their speed. Any new input stops it.
 
 The hook owns the header's morph classes and inline variables, so React must not render them. Programmatic scrolling must pass `behavior: 'instant'`, because `html` sets `scroll-behavior: smooth`.
