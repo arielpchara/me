@@ -106,3 +106,5 @@ dist
 
 .DS_Store
 Thumbs.db
+# Static site build
+dist-ssr

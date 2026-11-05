@@ -1,28 +1,40 @@
 {
   "name": "me",
-  "version": "1.0.0",
-  "description": "![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)",
-  "main": "index.js",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Ariel Pchara's personal blog and profile",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "open": "http-server -o"
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && vite build --ssr src/app/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arielpchara/me.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/arielpchara/me/issues"
-  },
-  "homepage": "https://github.com/arielpchara/me#readme",
-  "devDependencies": {
-    "http-server": "^14.1.1"
-  },
+  "license": "MIT",
+  "homepage": "https://pchara.com",
   "dependencies": {
-    "md-to-pdf": "^5.2.5"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.18.5",
+    "refractor": "^5.0.0",
+    "rehype-prism-plus": "^2.0.2",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/prismjs": "^1.26.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "front-matter": "^4.0.2",
+    "md-to-pdf": "^5.2.5",
+    "prismjs": "^1.30.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6"
   }
 }

@@ -15,11 +15,10 @@ A modern, minimalist personal website showcasing my professional experience as a
 
 ## 💻 Technologies
 
-- HTML5
-- CSS3 (with custom design system)
-- Vanilla JavaScript
-- Remix Icons
-- JetBrains Mono font from Google Fonts
+- React, TypeScript and React Router
+- Vite, with every route prerendered to static HTML
+- Posts and profile content in Markdown (`content/`)
+- Remix Icons, Inter and JetBrains Mono
 
 ## 📋 Sections
 
@@ -39,7 +38,13 @@ git clone https://github.com/arielpchara/me.git
 cd me
 ```
 
-2. Open `index.html` in your browser to view the website locally
+2. Install and run
+```bash
+npm install
+npm run dev
+```
+
+The site runs at http://localhost:4173. `npm run build` creates the static site in `dist/`.
 
 ## 📤 Deployment
 
@@ -47,19 +52,17 @@ The site is deployed using GitHub Pages and is available at:
 
 - [pchara.com](https://pchara.com)
 
+Every push to `main` builds the site and deploys it with GitHub Actions (`.github/workflows/deploy.yml`).
+
 ### Deploying your own version:
 
 1. Fork this repository
-2. Enable GitHub Pages in your repository settings
-3. (Optional) Configure a custom domain
+2. In the repository settings, set Pages > Source to **GitHub Actions**
+3. (Optional) Put your domain in `public/CNAME`
 
 ## 🔄 Updates
 
-To update the website:
-
-1. Make desired changes
-2. Commit and push to GitHub
-3. GitHub Pages will automatically rebuild and deploy
+To add a post, create a Markdown file in `content/posts/` and push to `main`. See `AGENTS.md` for the format.
 
 ## 📝 License
 
