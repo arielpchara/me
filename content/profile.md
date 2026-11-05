@@ -13,9 +13,7 @@ skills:
       - Node.js
       - Go
       - C#
-      - PHP
       - Java
-      - C
   - title: Libraries & Frameworks
     icon: ri-layout-4-line
     items:
@@ -32,11 +30,11 @@ skills:
       - MySQL
       - MongoDB
       - DynamoDB
+      - PostgreSQL
   - title: Cloud Platforms
     icon: ri-cloud-line
     items:
       - AWS
-      - Azure
       - AWS Lambda
       - API Gateway
       - SQS
@@ -66,9 +64,14 @@ skills:
       - BrowserStack
       - Storybook
 experience:
+  - key: Happen Bank
+    role: Senior Software Engineer
+    date: Oct 2026 – Present
+    company: Happen Bank – San Francisco, CA
+    description: Software engineering with Java.
   - key: ADP
     role: Lead Developer
-    date: May 2026 – Present
+    date: May 2026 – Oct 2026
     company: ADP
     description: Authoring RFCs to define technical direction and drive alignment across engineering teams. Leading code reviews and tradeoff discussions, collecting and analyzing service metrics, owning the full feature release lifecycle, and driving performance improvements across critical services.
   - key: Fanatics
@@ -108,4 +111,4 @@ experience:
     description: Built and maintained web applications across diverse industries, gaining deep expertise in JavaScript, PHP, C, and Java over 13+ years. Evolved from junior to senior roles, developing a strong foundation in software architecture and best practices.
 ---
 
-Senior Fullstack Developer with 20+ years of experience in software development, leading frontend and backend initiatives with a strong focus on architecture. At Santander/PagoNxt, led a 10-member frontend squad and built a unified Design System with Storybook and CSS modules, driving consistent UI development across multiple global projects. At South System, architected a real-time remote device monitoring platform using C#, Node.js, and AWS serverless services. At Fanatics (via Avenue Code), implemented new API features with Go, Temporal, and Kafka, and refactored legacy Go and React codebases, boosting backend performance and reliability across event-driven systems. Currently at ADP as Lead Developer, authoring RFCs, driving code reviews, analyzing service metrics, owning feature releases end-to-end, and leading performance improvements across critical services.
+Senior Fullstack Developer with 20+ years of experience in software development, leading frontend and backend initiatives with a strong focus on architecture. At Santander/PagoNxt, led a 10-member frontend squad and built a unified Design System with Storybook and CSS modules, driving consistent UI development across multiple global projects. At South System, architected a real-time remote device monitoring platform using C#, Node.js, and AWS serverless services. At Fanatics (via Avenue Code), implemented new API features with Go, Temporal, and Kafka, and refactored legacy Go and React codebases, boosting backend performance and reliability across event-driven systems. At ADP, as Lead Developer, authored RFCs, drove code reviews, analyzed service metrics, owned feature releases end-to-end, and led performance improvements across critical services. Currently a Senior Software Engineer at Happen Bank, working with Java.

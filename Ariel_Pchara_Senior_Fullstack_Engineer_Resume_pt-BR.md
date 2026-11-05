@@ -10,14 +10,20 @@ Porto Alegre, Rio Grande do Sul, Brasil
 ## Resumo Profissional
 
 Desenvolvedor Fullstack Sênior com mais de 20 anos de experiência em desenvolvimento de software, liderando iniciativas de frontend e backend com forte foco em arquitetura.  
-No Santander/PagoNxt, liderou um squad de 10 desenvolvedores frontend e construiu um Design System unificado com Storybook e CSS modules, promovendo consistência no desenvolvimento de UI em múltiplos projetos globais e reduzindo defeitos de interface. Na South System, arquitetou uma plataforma de monitoramento remoto de dispositivos em tempo real utilizando C#, Node.js e serviços serverless da AWS (Lambda, SQS, SNS, DynamoDB), reduzindo o tempo de integração de novos dispositivos e entregando observabilidade completa à equipe de operações. Na Fanatics (via Avenue Code), implementou novas funcionalidades de API com Go, Temporal e Kafka, e refatorou codebases legadas em Go e React, aumentando a performance e confiabilidade do backend em sistemas orientados a eventos. Atualmente na ADP, atuando como Lead Developer — elaborando RFCs, conduzindo code reviews, analisando métricas de serviço, liderando releases de ponta a ponta e impulsionando melhorias de performance em serviços críticos.  
+No Santander/PagoNxt, liderou um squad de 10 desenvolvedores frontend e construiu um Design System unificado com Storybook e CSS modules, promovendo consistência no desenvolvimento de UI em múltiplos projetos globais e reduzindo defeitos de interface. Na South System, arquitetou uma plataforma de monitoramento remoto de dispositivos em tempo real utilizando C#, Node.js e serviços serverless da AWS (Lambda, SQS, SNS, DynamoDB), reduzindo o tempo de integração de novos dispositivos e entregando observabilidade completa à equipe de operações. Na Fanatics (via Avenue Code), implementou novas funcionalidades de API com Go, Temporal e Kafka, e refatorou codebases legadas em Go e React, aumentando a performance e confiabilidade do backend em sistemas orientados a eventos. Na ADP, atuou como Lead Developer — elaborando RFCs, conduzindo code reviews, analisando métricas de serviço, liderando releases de ponta a ponta e impulsionando melhorias de performance em serviços críticos. Atualmente é Engenheiro de Software Sênior no Happen Bank, trabalhando com Java.  
 Apaixonado por aplicar expertise em arquitetura moderna para impulsionar soluções de software inovadoras, de alta qualidade e escaláveis.
 
 ## Experiência Profissional
 
+**Engenheiro de Software Sênior**  
+**Happen Bank** – San Francisco, CA  
+*Out 2026 – Presente*
+
+- Engenharia de software com Java.
+
 **Lead Developer**  
 **ADP**  
-*Mai 2026 – Presente*
+*Mai 2026 – Out 2026*
 
 - Elaborou RFCs para definir direção técnica e promover alinhamento entre equipes de engenharia.
 - Conduziu code reviews e facilitou discussões de tradeoffs para garantir soluções de alta qualidade e manutenibilidade.
@@ -94,16 +100,16 @@ Apaixonado por aplicar expertise em arquitetura moderna para impulsionar soluç�
 ## Habilidades Técnicas
 
 ### Linguagens de Programação
-- JavaScript, TypeScript, Go, C#, PHP, C, Java
+- JavaScript, TypeScript, Go, C#, Java
 
 ### Bibliotecas e Frameworks
 - React, Angular/AngularJS, RxJS, Node.js, Webpack, MarkoJS, Jest, Testing Library, Storybook, AWS CDK
 
 ### Bancos de Dados
-- MySQL, MongoDB, DynamoDB
+- MySQL, MongoDB, DynamoDB, PostgreSQL
 
 ### Cloud e DevOps
-- AWS (Lambda, SQS, SNS, DynamoDB, API Gateway, CDK), Azure, Docker, Kubernetes, Jenkins, Git, Traefik, HashiCorp Vault, Consul, Liquibase, Kafka, Temporal
+- AWS (Lambda, SQS, SNS, DynamoDB, API Gateway, CDK), Docker, Kubernetes, Jenkins, Git, Traefik, HashiCorp Vault, Consul, Liquibase, Kafka, Temporal
 
 ### Outros
 - Micro-frontends, Design Systems, Pipelines CI/CD, Testes Unitários e de Integração, Arquitetura orientada a eventos, OAuth2 / JWT / Azure AD
