@@ -44,7 +44,7 @@ input, button, textarea, select {
   --color-bg:             #1a1d33;
   --color-bg-secondary:   rgba(255,255,255,0.06);
   --color-bg-raised:      #262a47;
-  --color-bar:            rgba(26,29,51,0.75);
+  --color-bar:            rgba(26,29,51,0.8);
   --color-bg-code:        #14162a;
   --color-border:         rgba(255,255,255,0.1);
   --color-border-hover:   rgba(255,255,255,0.22);
@@ -114,6 +114,109 @@ input, button, textarea, select {
   --text-read: 1.125rem;
 }
 
+/* Light theme: set by the switch (data-theme on <html>). Only colors change. Code blocks stay dark. */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg:             #f4f5fb;
+  --color-bg-secondary:   rgba(27,30,54,0.06);
+  --color-bg-raised:      #ffffff;
+  --color-bar:            rgba(244,245,251,0.8);
+  --color-border:         rgba(27,30,54,0.12);
+  --color-border-hover:   rgba(27,30,54,0.28);
+
+  --color-text:           #1b1e36;
+  --color-text-muted:     #474c68;
+  --color-text-light:     #666b88;
+
+  --color-primary:        #3b49df;
+  --color-primary-hover:  #2a36b8;
+  --color-primary-light:  rgba(59,73,223,0.1);
+  --color-primary-line:   rgba(59,73,223,0.4);
+  --color-accent:         #9a4d00;
+  --color-tag-text:       #474c68;
+  --color-success:        #1e7a3b;
+  --color-diagram:        #474c68;
+  --color-shadow:         rgba(27,30,80,0.1);
+  --color-shadow-hover:   rgba(27,30,80,0.2);
+
+  --gradient-page:
+    radial-gradient(70rem 42rem at 8% -8%, rgba(99,102,241,0.2), transparent 70%),
+    radial-gradient(56rem 38rem at 100% 8%, rgba(20,184,166,0.12), transparent 70%),
+    radial-gradient(64rem 48rem at 85% 105%, rgba(217,70,139,0.1), transparent 70%),
+    linear-gradient(165deg, #f6f7fd 0%, #eef0fb 52%, #eaf3f6 100%);
+  --gradient-rule:     linear-gradient(90deg, transparent, rgba(59,73,223,0.35), transparent);
+}
+
+/* Charcoal palette (charcoal, tan, taupe, marsala), on top of the dark or light theme. */
+:root[data-palette='charcoal'] {
+  --color-bg:             #212a31;
+  --color-bg-secondary:   rgba(210,210,200,0.06);
+  --color-bg-raised:      #2a343c;
+  --color-bar:            rgba(33,42,49,0.8);
+  --color-bg-code:        #192026;
+  --color-border:         rgba(210,210,200,0.14);
+  --color-border-hover:   rgba(210,210,200,0.3);
+
+  --color-text:           #ecece6;
+  --color-text-muted:     #d2d2c8;
+  --color-text-light:     #a9aea8;
+  --color-on-primary:     #192026;
+
+  --color-primary:        #c4a46a;
+  --color-primary-hover:  #dcc08a;
+  --color-primary-light:  rgba(196,164,106,0.14);
+  --color-primary-line:   rgba(196,164,106,0.4);
+  --color-accent:         #d98a72;
+  --color-tag-text:       #d2d2c8;
+  --color-success:        #9cc59a;
+  --color-diagram:        #d2d2c8;
+  --color-shadow:         rgba(8,12,16,0.3);
+  --color-shadow-hover:   rgba(8,12,16,0.5);
+
+  --gradient-page:
+    radial-gradient(70rem 42rem at 8% -8%, rgba(105,83,44,0.45), transparent 70%),
+    radial-gradient(56rem 38rem at 100% 8%, rgba(210,210,200,0.08), transparent 70%),
+    radial-gradient(64rem 48rem at 85% 105%, rgba(124,62,46,0.4), transparent 70%),
+    linear-gradient(165deg, #263139 0%, #212a31 52%, #1c242a 100%);
+  --gradient-primary:  linear-gradient(135deg, #c4a46a 0%, #8c7240 100%);
+  --gradient-rule:     linear-gradient(90deg, transparent, rgba(196,164,106,0.42), transparent);
+}
+
+:root[data-palette='charcoal'][data-theme='light'] {
+  --color-bg:             #e6e6de;
+  --color-bg-secondary:   rgba(33,42,49,0.06);
+  --color-bg-raised:      #f0f0ea;
+  --color-bar:            rgba(230,230,222,0.8);
+  --color-bg-code:        #212a31;
+  --color-border:         rgba(33,42,49,0.16);
+  --color-border-hover:   rgba(33,42,49,0.34);
+
+  --color-text:           #212a31;
+  --color-text-muted:     #3f4a52;
+  --color-text-light:     #56606a;
+  --color-on-primary:     #f0f0ea;
+
+  --color-primary:        #69532c;
+  --color-primary-hover:  #4d3c1e;
+  --color-primary-light:  rgba(105,83,44,0.12);
+  --color-primary-line:   rgba(105,83,44,0.4);
+  --color-accent:         #7c3e2e;
+  --color-tag-text:       #3f4a52;
+  --color-success:        #3f6b3a;
+  --color-diagram:        #3f4a52;
+  --color-shadow:         rgba(33,42,49,0.14);
+  --color-shadow-hover:   rgba(33,42,49,0.26);
+
+  --gradient-page:
+    radial-gradient(70rem 42rem at 8% -8%, rgba(105,83,44,0.16), transparent 70%),
+    radial-gradient(56rem 38rem at 100% 8%, rgba(210,210,200,0.7), transparent 70%),
+    radial-gradient(64rem 48rem at 85% 105%, rgba(124,62,46,0.1), transparent 70%),
+    linear-gradient(165deg, #ecece5 0%, #e6e6de 52%, #dedfd6 100%);
+  --gradient-primary:  linear-gradient(135deg, #7a6234 0%, #52401f 100%);
+  --gradient-rule:     linear-gradient(90deg, transparent, rgba(105,83,44,0.4), transparent);
+}
+
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 html {
   background-color: var(--color-bg);
@@ -179,8 +282,6 @@ header {
   height: var(--hero-h);
   margin-bottom: calc(var(--nav-top) + var(--nav-h) + var(--nav-gap));
   padding: 0 var(--photo-w) 0 var(--header-inset);
-  /* Clips the picture as it leaves sideways, but lets the menu hang below the hero. */
-  clip-path: inset(0 0 calc(-1 * (var(--nav-top) + var(--nav-h))) 0);
 }
 
 /* Bar surface: invisible on the hero, solid once the header is compact. */
@@ -191,6 +292,7 @@ header::before {
   z-index: -1;
   background: var(--color-bar);
   border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 6px 20px var(--color-shadow);
   backdrop-filter: blur(12px);
   opacity: var(--p, 0);
 }
@@ -472,6 +574,88 @@ header.header--live {
   border-bottom-color: var(--color-accent);
   color: var(--color-text);
   font-weight: 600;
+}
+
+/* Theme switch: [moon] [switch] [sun]. The icon of the active theme is lit. */
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: var(--space-2);
+  padding: var(--space-1);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.theme-switch:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.theme-switch-icon {
+  transition: color 0.15s;
+}
+
+.theme-switch[aria-checked='false'] .theme-switch-icon--dark,
+.theme-switch[aria-checked='true'] .theme-switch-icon--light {
+  color: var(--color-accent);
+}
+
+.theme-switch-track {
+  position: relative;
+  width: 2.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--color-border-hover);
+  border-radius: 999px;
+  background: var(--color-bg-secondary);
+}
+
+.theme-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(1.25rem - 6px);
+  height: calc(1.25rem - 6px);
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  transition: transform 0.2s;
+}
+
+.theme-switch[aria-checked='true'] .theme-switch-thumb {
+  transform: translateX(1rem);
+}
+
+/* Palette button: the charcoal palette. */
+.theme-palette {
+  display: inline-flex;
+  margin-left: var(--space-1);
+  padding: var(--space-1);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.theme-palette:hover {
+  color: var(--color-text);
+}
+
+.theme-palette[aria-pressed='true'] {
+  color: var(--color-accent);
+}
+
+.theme-palette:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* ─── Section Headings ───────────────────────────────────────────────────── */
@@ -1311,8 +1495,74 @@ footer {
 }
 
 @media (max-width: 359px) {
-  .nav-link i { display: none; }
-  .site-nav { gap: var(--space-3); }
+  .header--compact .header-role {
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (max-width: 340px) {
+  header.header--compact .site-nav,
+  header.header--navbar .site-nav {
+    gap: 2px;
+    padding-inline-end: var(--space-2);
+  }
+}
+
+/* Narrow bar: the menu shows icons only and the switch shrinks, so it clears the name.
+   The hero's menu has room and keeps its labels. */
+@media (max-width: 520px) {
+  .header--compact .nav-label,
+  .header--navbar .nav-label {
+    display: none;
+  }
+
+  .header--compact .site-nav,
+  .header--navbar .site-nav {
+    gap: var(--space-2);
+  }
+
+  .header--compact .nav-link,
+  .header--navbar .nav-link {
+    padding-inline: var(--space-1);
+  }
+
+  .header--compact .nav-link i,
+  .header--navbar .nav-link i {
+    font-size: 1.125rem;
+  }
+
+  .header--compact .theme-palette,
+  .header--navbar .theme-palette {
+    margin-left: 0;
+    padding-inline: 0;
+    font-size: 0.875rem;
+  }
+
+  .header--compact .theme-switch,
+  .header--navbar .theme-switch {
+    gap: var(--space-1);
+    margin-left: 0;
+    padding-inline: 0;
+    font-size: 0.875rem;
+  }
+
+  .header--compact .theme-switch-track,
+  .header--navbar .theme-switch-track {
+    width: 1.75rem;
+  }
+
+  .header--compact .theme-switch[aria-checked='true'] .theme-switch-thumb,
+  .header--navbar .theme-switch[aria-checked='true'] .theme-switch-thumb {
+    transform: translateX(0.5rem);
+  }
+}
+
+/* Small phones: the bar has no room for the moon and sun, so the track stands alone. */
+@media (max-width: 400px) {
+  .header--compact .theme-switch-icon,
+  .header--navbar .theme-switch-icon {
+    display: none;
+  }
 }
 
 /* Phones: no room for the subtitle beside the name in the bar. */

@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from 'react';
 import { Link, NavLink, useLocation, useNavigationType } from 'react-router-dom';
 import photo from '@/assets/header-photo.jpg';
 import { heroScrollRange, useHeroMorph } from '@/shared/hooks/useHeroMorph';
+import { ThemeSwitch } from './ThemeSwitch';
 
 export type HeaderVariant = 'hero' | 'compact';
 
@@ -59,12 +60,13 @@ export function Header({ variant }: HeaderProps) {
         </p>
       </div>
       <nav className="site-nav">
-        <NavLink to="/" end state={menuState} className={navLinkClass}>
-          <i className="ri-article-line"></i> Blog
+        <NavLink to="/" end state={menuState} className={navLinkClass} aria-label="Blog">
+          <i className="ri-article-line"></i> <span className="nav-label">Blog</span>
         </NavLink>
-        <NavLink to="/profile/" state={menuState} className={navLinkClass}>
-          <i className="ri-user-5-line"></i> Profile
+        <NavLink to="/profile/" state={menuState} className={navLinkClass} aria-label="Profile">
+          <i className="ri-user-5-line"></i> <span className="nav-label">Profile</span>
         </NavLink>
+        <ThemeSwitch />
       </nav>
     </header>
   );

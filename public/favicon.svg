@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AP">
   <defs>
     <linearGradient id="theme" gradientUnits="userSpaceOnUse" x1="4" y1="4" x2="60" y2="60">
-      <stop offset="0" stop-color="#4f5ee8"/>
-      <stop offset="1" stop-color="#7147dc"/>
+      <stop offset="0" stop-color="#7c3e2e"/>
+      <stop offset="1" stop-color="#212a31"/>
     </linearGradient>
     <path id="p" d="M38 25 V52 M38 25 H45 A8.25 8.25 0 0 1 45 41.5 H38"/>
   </defs>
   <circle cx="32" cy="32" r="32" fill="url(#theme)"/>
   <g fill="none" stroke-linecap="round" stroke-linejoin="round">
     <!-- A sits a little above P. P is outlined in the circle color, so where they overlap the A is cut cleanly. -->
-    <path d="M11 41 L24 12 L37 41 M16.5 30.5 H31.5" stroke="#fff" stroke-width="5.5"/>
+    <path d="M11 41 L24 12 L37 41 M16.5 30.5 H31.5" stroke="#d2d2c8" stroke-width="5.5"/>
     <use href="#p" stroke="url(#theme)" stroke-width="9"/>
-    <use href="#p" stroke="#fff" stroke-width="5.5"/>
+    <use href="#p" stroke="#d2d2c8" stroke-width="5.5"/>
   </g>
 </svg>
