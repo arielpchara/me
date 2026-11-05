@@ -47,7 +47,7 @@ export function Header({ variant }: HeaderProps) {
         />
       )}
       <div className="header-content">
-        <p className="header-role">Senior Fullstack Engineer</p>
+        <p className="header-role">Senior Software Engineer</p>
         <h1>
           <Link className="header-home" to="/">
             Ariel <span className="header-surname">Pchara</span>

@@ -4,6 +4,8 @@ const contactLinks = [
   { href: 'https://github.com/arielpchara', icon: 'ri-github-line', label: 'GitHub', external: true },
 ];
 
+const tags = ['Senior Software Engineer', 'React & Node.js Specialist', 'TypeScript', 'Microservices', 'AWS'];
+
 export function Footer() {
   return (
     <footer>
@@ -18,17 +20,24 @@ export function Footer() {
                 key={href}
                 href={href}
                 className="contact-link"
+                aria-label={label}
                 {...(external ? { target: '_blank', rel: 'noopener' } : {})}
               >
-                <i className={icon}></i> {label}
+                <i className={icon}></i> <span className="contact-label">{label}</span>
               </a>
             ))}
           </div>
         </div>
         <div className="footer-bottom">
+          <div className="post-meta">
+            {tags.map((tag) => (
+              <span key={tag} className="post-tag">
+                {tag}
+              </span>
+            ))}
+          </div>
           <p>
-            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Ariel Pchara · Senior
-            Fullstack Engineer | React &amp; Node.js Specialist | TypeScript, Microservices, AWS
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Ariel Pchara
           </p>
         </div>
       </div>
