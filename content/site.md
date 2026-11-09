@@ -1,0 +1,13 @@
+---
+footerTags:
+  - Senior Software Engineer
+  - TypeScript
+  - Node.js
+  - React
+  - Java
+  - Go
+  - AWS
+  - Microservices
+  - Micro-frontend
+  - Kafka
+---

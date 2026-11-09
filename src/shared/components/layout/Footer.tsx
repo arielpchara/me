@@ -1,10 +1,10 @@
+import { site } from '@/shared/data/site';
+
 const contactLinks = [
   { href: 'mailto:ariel@pchara.com', icon: 'ri-mail-line', label: 'ariel@pchara.com', external: false },
   { href: 'https://linkedin.com/in/arielpchara', icon: 'ri-linkedin-box-line', label: 'LinkedIn', external: true },
   { href: 'https://github.com/arielpchara', icon: 'ri-github-line', label: 'GitHub', external: true },
 ];
-
-const tags = ['Senior Software Engineer', 'React & Node.js Specialist', 'TypeScript', 'Microservices', 'AWS'];
 
 export function Footer() {
   return (
@@ -30,7 +30,7 @@ export function Footer() {
         </div>
         <div className="footer-bottom">
           <div className="post-meta">
-            {tags.map((tag) => (
+            {site.footerTags.map((tag) => (
               <span key={tag} className="post-tag">
                 {tag}
               </span>

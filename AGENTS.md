@@ -24,7 +24,8 @@ Pushing to `main` builds the site and deploys `dist/` to GitHub Pages (`.github/
 me/
 ├── content/
 │   ├── posts/<file>.md          # Blog posts
-│   └── profile.md               # Profile: data in frontmatter, About text in the body
+│   ├── profile.md               # Profile: data in frontmatter, About text in the body
+│   └── site.md                  # Site-wide data in frontmatter (footer tags)
 ├── public/                      # Copied as is: CNAME, resumes, post images, old-URL redirects
 ├── scripts/prerender.mjs        # Writes one HTML file per route
 ├── src/
@@ -36,6 +37,7 @@ me/
 │   │   └── profile/             # components/ data/ pages/ types.ts
 │   └── shared/
 │       ├── components/          # layout/ (Header, Footer, Layout, ThemeSwitch), markdown/ (Markdown)
+│       ├── data/                # site (footer tags)
 │       ├── hooks/               # useHeroMorph, useTheme
 │       ├── lib/                 # analytics
 │       └── pages/               # NotFoundPage
